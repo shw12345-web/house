@@ -3,6 +3,7 @@ package com.yunzhu.house.config;
 import com.aliyun.oss.OSSClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * OSS对象存储相关配置
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Bean;
  * @author DELL
  * @date 2022/8/4 16:18
  */
+@Configuration
 public class OssConfig {
 
     @Value("${aliyun.oss.endpoint}")

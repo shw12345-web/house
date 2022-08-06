@@ -35,18 +35,18 @@ public class HouseSecurityConfig {
         return username -> adminService.loadUserByUsername(username);
     }
 
-    @Bean
-    public DynamicSecurityService dynamicSecurityService() {
-        return new DynamicSecurityService() {
-            @Override
-            public Map<String, ConfigAttribute> loadDataSource() {
-                Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
-                List<UmsResource> resourceList = resourceService.listAll();
-                for (UmsResource resource : resourceList) {
-                    map.put(resource.getUrl(), new org.springframework.security.access.SecurityConfig(resource.getId() + ":" + resource.getName()));
-                }
-                return map;
-            }
-        };
-    }
+//    @Bean
+//    public DynamicSecurityService dynamicSecurityService() {
+//        return new DynamicSecurityService() {
+//            @Override
+//            public Map<String, ConfigAttribute> loadDataSource() {
+//                Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
+//                List<UmsResource> resourceList = resourceService.listAll();
+//                for (UmsResource resource : resourceList) {
+//                    map.put(resource.getUrl(), new org.springframework.security.access.SecurityConfig(resource.getId() + ":" + resource.getName()));
+//                }
+//                return map;
+//            }
+//        };
+//    }
 }
