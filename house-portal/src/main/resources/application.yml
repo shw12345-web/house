@@ -54,3 +54,12 @@ rabbitmq:
     name:
       cancelOrder: cancelOrderQueue
 
+
+# 短信发送
+sms:
+  accessKeyId: LTAICNmks8S1RMux
+  accessKeySecret: C07WZ98KO6AdkbNnj2k85Jq6BGmAcr
+  signName: 阿里云短信测试
+  templateCode: SMS_154950909
+  region: cn-hangzhou
+  endpoint: dysmsapi.aliyuncs.com
