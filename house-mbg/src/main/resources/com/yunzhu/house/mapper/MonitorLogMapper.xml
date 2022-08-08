@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yunzhu.house.mapper.HousetypeMapper">
-  <resultMap id="BaseResultMap" type="com.yunzhu.house.model.Housetype">
+<mapper namespace="com.yunzhu.house.mapper.MonitorLogMapper">
+  <resultMap id="BaseResultMap" type="com.yunzhu.house.model.MonitorLog">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="houseTypeName" jdbcType="VARCHAR" property="housetypename" />
-    <result column="houseTypeDesc" jdbcType="VARCHAR" property="housetypedesc" />
+    <result column="log_type" jdbcType="SMALLINT" property="logType" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="object_id" jdbcType="INTEGER" property="objectId" />
+    <result column="value" jdbcType="DOUBLE" property="value" />
+    <result column="disarm" jdbcType="TINYINT" property="disarm" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, houseTypeName, houseTypeDesc
+    id, log_type, message, object_id, value, disarm
   </sql>
-  <select id="selectByExample" parameterType="com.yunzhu.house.model.HousetypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yunzhu.house.model.MonitorLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from housetype
+    from monitor_log
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,65 +87,94 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from housetype
+    from monitor_log
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from housetype
+    delete from monitor_log
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yunzhu.house.model.HousetypeExample">
-    delete from housetype
+  <delete id="deleteByExample" parameterType="com.yunzhu.house.model.MonitorLogExample">
+    delete from monitor_log
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yunzhu.house.model.Housetype">
+  <insert id="insert" parameterType="com.yunzhu.house.model.MonitorLog">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into housetype (houseTypeName, houseTypeDesc)
-    values (#{housetypename,jdbcType=VARCHAR}, #{housetypedesc,jdbcType=VARCHAR})
+    insert into monitor_log (log_type, message, object_id, 
+      value, disarm)
+    values (#{logType,jdbcType=SMALLINT}, #{message,jdbcType=VARCHAR}, #{objectId,jdbcType=INTEGER}, 
+      #{value,jdbcType=DOUBLE}, #{disarm,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yunzhu.house.model.Housetype">
+  <insert id="insertSelective" parameterType="com.yunzhu.house.model.MonitorLog">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into housetype
+    insert into monitor_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="housetypename != null">
-        houseTypeName,
+      <if test="logType != null">
+        log_type,
       </if>
-      <if test="housetypedesc != null">
-        houseTypeDesc,
+      <if test="message != null">
+        message,
+      </if>
+      <if test="objectId != null">
+        object_id,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="disarm != null">
+        disarm,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="housetypename != null">
-        #{housetypename,jdbcType=VARCHAR},
+      <if test="logType != null">
+        #{logType,jdbcType=SMALLINT},
       </if>
-      <if test="housetypedesc != null">
-        #{housetypedesc,jdbcType=VARCHAR},
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=DOUBLE},
+      </if>
+      <if test="disarm != null">
+        #{disarm,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yunzhu.house.model.HousetypeExample" resultType="java.lang.Long">
-    select count(*) from housetype
+  <select id="countByExample" parameterType="com.yunzhu.house.model.MonitorLogExample" resultType="java.lang.Long">
+    select count(*) from monitor_log
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update housetype
+    update monitor_log
     <set>
       <if test="row.id != null">
         id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="row.housetypename != null">
-        houseTypeName = #{row.housetypename,jdbcType=VARCHAR},
+      <if test="row.logType != null">
+        log_type = #{row.logType,jdbcType=SMALLINT},
       </if>
-      <if test="row.housetypedesc != null">
-        houseTypeDesc = #{row.housetypedesc,jdbcType=VARCHAR},
+      <if test="row.message != null">
+        message = #{row.message,jdbcType=VARCHAR},
+      </if>
+      <if test="row.objectId != null">
+        object_id = #{row.objectId,jdbcType=INTEGER},
+      </if>
+      <if test="row.value != null">
+        value = #{row.value,jdbcType=DOUBLE},
+      </if>
+      <if test="row.disarm != null">
+        disarm = #{row.disarm,jdbcType=TINYINT},
       </if>
     </set>
     <if test="example != null">
@@ -150,30 +182,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update housetype
+    update monitor_log
     set id = #{row.id,jdbcType=BIGINT},
-      houseTypeName = #{row.housetypename,jdbcType=VARCHAR},
-      houseTypeDesc = #{row.housetypedesc,jdbcType=VARCHAR}
+      log_type = #{row.logType,jdbcType=SMALLINT},
+      message = #{row.message,jdbcType=VARCHAR},
+      object_id = #{row.objectId,jdbcType=INTEGER},
+      value = #{row.value,jdbcType=DOUBLE},
+      disarm = #{row.disarm,jdbcType=TINYINT}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yunzhu.house.model.Housetype">
-    update housetype
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunzhu.house.model.MonitorLog">
+    update monitor_log
     <set>
-      <if test="housetypename != null">
-        houseTypeName = #{housetypename,jdbcType=VARCHAR},
+      <if test="logType != null">
+        log_type = #{logType,jdbcType=SMALLINT},
       </if>
-      <if test="housetypedesc != null">
-        houseTypeDesc = #{housetypedesc,jdbcType=VARCHAR},
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        object_id = #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=DOUBLE},
+      </if>
+      <if test="disarm != null">
+        disarm = #{disarm,jdbcType=TINYINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yunzhu.house.model.Housetype">
-    update housetype
-    set houseTypeName = #{housetypename,jdbcType=VARCHAR},
-      houseTypeDesc = #{housetypedesc,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yunzhu.house.model.MonitorLog">
+    update monitor_log
+    set log_type = #{logType,jdbcType=SMALLINT},
+      message = #{message,jdbcType=VARCHAR},
+      object_id = #{objectId,jdbcType=INTEGER},
+      value = #{value,jdbcType=DOUBLE},
+      disarm = #{disarm,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,30 +1,30 @@
 package com.yunzhu.house.mapper;
 
-import com.yunzhu.house.model.HouseType;
-import com.yunzhu.house.model.HouseTypeExample;
+import com.yunzhu.house.model.Housetype;
+import com.yunzhu.house.model.HousetypeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface HouseTypeMapper {
-    long countByExample(HouseTypeExample example);
+public interface HousetypeMapper {
+    long countByExample(HousetypeExample example);
 
-    int deleteByExample(HouseTypeExample example);
+    int deleteByExample(HousetypeExample example);
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(HouseType row);
+    int insert(Housetype row);
 
-    int insertSelective(HouseType row);
+    int insertSelective(Housetype row);
 
-    List<HouseType> selectByExample(HouseTypeExample example);
+    List<Housetype> selectByExample(HousetypeExample example);
 
-    HouseType selectByPrimaryKey(Long id);
+    Housetype selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("row") HouseType row, @Param("example") HouseTypeExample example);
+    int updateByExampleSelective(@Param("row") Housetype row, @Param("example") HousetypeExample example);
 
-    int updateByExample(@Param("row") HouseType row, @Param("example") HouseTypeExample example);
+    int updateByExample(@Param("row") Housetype row, @Param("example") HousetypeExample example);
 
-    int updateByPrimaryKeySelective(HouseType row);
+    int updateByPrimaryKeySelective(Housetype row);
 
-    int updateByPrimaryKey(HouseType row);
+    int updateByPrimaryKey(Housetype row);
 }

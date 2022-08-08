@@ -3,15 +3,12 @@ package com.yunzhu.house.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
-public class HouseRoom implements Serializable {
-    @ApiModelProperty(value = "主键ID")
+public class RoleAuthority implements Serializable {
     private Long id;
 
-    @ApiModelProperty(value = "房源ID")
-    private Integer houseid;
+    private String authorityId;
 
-    @ApiModelProperty(value = "房间ID")
-    private Integer roomid;
+    private Short role;
 
     private static final long serialVersionUID = 1L;
 
@@ -23,20 +20,20 @@ public class HouseRoom implements Serializable {
         this.id = id;
     }
 
-    public Integer getHouseid() {
-        return houseid;
+    public String getAuthorityId() {
+        return authorityId;
     }
 
-    public void setHouseid(Integer houseid) {
-        this.houseid = houseid;
+    public void setAuthorityId(String authorityId) {
+        this.authorityId = authorityId;
     }
 
-    public Integer getRoomid() {
-        return roomid;
+    public Short getRole() {
+        return role;
     }
 
-    public void setRoomid(Integer roomid) {
-        this.roomid = roomid;
+    public void setRole(Short role) {
+        this.role = role;
     }
 
     @Override
@@ -46,8 +43,8 @@ public class HouseRoom implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", houseid=").append(houseid);
-        sb.append(", roomid=").append(roomid);
+        sb.append(", authorityId=").append(authorityId);
+        sb.append(", role=").append(role);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

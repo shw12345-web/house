@@ -3,15 +3,12 @@ package com.yunzhu.house.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
-public class HouseRoom implements Serializable {
-    @ApiModelProperty(value = "主键ID")
+public class HouseownerHouse implements Serializable {
     private Long id;
 
-    @ApiModelProperty(value = "房源ID")
-    private Integer houseid;
+    private Long houseid;
 
-    @ApiModelProperty(value = "房间ID")
-    private Integer roomid;
+    private Long houseownerid;
 
     private static final long serialVersionUID = 1L;
 
@@ -23,20 +20,20 @@ public class HouseRoom implements Serializable {
         this.id = id;
     }
 
-    public Integer getHouseid() {
+    public Long getHouseid() {
         return houseid;
     }
 
-    public void setHouseid(Integer houseid) {
+    public void setHouseid(Long houseid) {
         this.houseid = houseid;
     }
 
-    public Integer getRoomid() {
-        return roomid;
+    public Long getHouseownerid() {
+        return houseownerid;
     }
 
-    public void setRoomid(Integer roomid) {
-        this.roomid = roomid;
+    public void setHouseownerid(Long houseownerid) {
+        this.houseownerid = houseownerid;
     }
 
     @Override
@@ -47,7 +44,7 @@ public class HouseRoom implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", houseid=").append(houseid);
-        sb.append(", roomid=").append(roomid);
+        sb.append(", houseownerid=").append(houseownerid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

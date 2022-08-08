@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunzhu.house.mapper.HouseownerMapper">
+  <resultMap id="BaseResultMap" type="com.yunzhu.house.model.Houseowner">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="houseOwnerCode" jdbcType="VARCHAR" property="houseownercode" />
+    <result column="houseOwnerPassWord" jdbcType="VARCHAR" property="houseownerpassword" />
+    <result column="houseOwnerName" jdbcType="VARCHAR" property="houseownername" />
+    <result column="houseOwnerIdentify" jdbcType="VARCHAR" property="houseowneridentify" />
+    <result column="houseOwnerTel" jdbcType="VARCHAR" property="houseownertel" />
+    <result column="houseOwnerDesc" jdbcType="VARCHAR" property="houseownerdesc" />
+    <result column="houseOwnerAddress" jdbcType="VARCHAR" property="houseowneraddress" />
+    <result column="houseOwnerRole" jdbcType="BIGINT" property="houseownerrole" />
+    <result column="houseOwnerLastLoginTime" jdbcType="DATE" property="houseownerlastlogintime" />
+    <result column="registDate" jdbcType="DATE" property="registdate" />
+    <result column="checkOpion" jdbcType="VARCHAR" property="checkopion" />
+    <result column="checkerId" jdbcType="BIGINT" property="checkerid" />
+    <result column="checkerName" jdbcType="VARCHAR" property="checkername" />
+    <result column="checkDate" jdbcType="DATE" property="checkdate" />
+    <result column="houseOwnerImage" jdbcType="VARCHAR" property="houseownerimage" />
+    <result column="houseOwnerTwoDimensionalCode" jdbcType="VARCHAR" property="houseownertwodimensionalcode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, houseOwnerCode, houseOwnerPassWord, houseOwnerName, houseOwnerIdentify, houseOwnerTel, 
+    houseOwnerDesc, houseOwnerAddress, houseOwnerRole, houseOwnerLastLoginTime, registDate, 
+    checkOpion, checkerId, checkerName, checkDate, houseOwnerImage, houseOwnerTwoDimensionalCode
+  </sql>
+  <select id="selectByExample" parameterType="com.yunzhu.house.model.HouseownerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from houseowner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from houseowner
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from houseowner
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunzhu.house.model.HouseownerExample">
+    delete from houseowner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunzhu.house.model.Houseowner">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into houseowner (houseOwnerCode, houseOwnerPassWord, 
+      houseOwnerName, houseOwnerIdentify, houseOwnerTel, 
+      houseOwnerDesc, houseOwnerAddress, houseOwnerRole, 
+      houseOwnerLastLoginTime, registDate, checkOpion, 
+      checkerId, checkerName, checkDate, 
+      houseOwnerImage, houseOwnerTwoDimensionalCode
+      )
+    values (#{houseownercode,jdbcType=VARCHAR}, #{houseownerpassword,jdbcType=VARCHAR}, 
+      #{houseownername,jdbcType=VARCHAR}, #{houseowneridentify,jdbcType=VARCHAR}, #{houseownertel,jdbcType=VARCHAR}, 
+      #{houseownerdesc,jdbcType=VARCHAR}, #{houseowneraddress,jdbcType=VARCHAR}, #{houseownerrole,jdbcType=BIGINT}, 
+      #{houseownerlastlogintime,jdbcType=DATE}, #{registdate,jdbcType=DATE}, #{checkopion,jdbcType=VARCHAR}, 
+      #{checkerid,jdbcType=BIGINT}, #{checkername,jdbcType=VARCHAR}, #{checkdate,jdbcType=DATE}, 
+      #{houseownerimage,jdbcType=VARCHAR}, #{houseownertwodimensionalcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunzhu.house.model.Houseowner">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into houseowner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="houseownercode != null">
+        houseOwnerCode,
+      </if>
+      <if test="houseownerpassword != null">
+        houseOwnerPassWord,
+      </if>
+      <if test="houseownername != null">
+        houseOwnerName,
+      </if>
+      <if test="houseowneridentify != null">
+        houseOwnerIdentify,
+      </if>
+      <if test="houseownertel != null">
+        houseOwnerTel,
+      </if>
+      <if test="houseownerdesc != null">
+        houseOwnerDesc,
+      </if>
+      <if test="houseowneraddress != null">
+        houseOwnerAddress,
+      </if>
+      <if test="houseownerrole != null">
+        houseOwnerRole,
+      </if>
+      <if test="houseownerlastlogintime != null">
+        houseOwnerLastLoginTime,
+      </if>
+      <if test="registdate != null">
+        registDate,
+      </if>
+      <if test="checkopion != null">
+        checkOpion,
+      </if>
+      <if test="checkerid != null">
+        checkerId,
+      </if>
+      <if test="checkername != null">
+        checkerName,
+      </if>
+      <if test="checkdate != null">
+        checkDate,
+      </if>
+      <if test="houseownerimage != null">
+        houseOwnerImage,
+      </if>
+      <if test="houseownertwodimensionalcode != null">
+        houseOwnerTwoDimensionalCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="houseownercode != null">
+        #{houseownercode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerpassword != null">
+        #{houseownerpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownername != null">
+        #{houseownername,jdbcType=VARCHAR},
+      </if>
+      <if test="houseowneridentify != null">
+        #{houseowneridentify,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownertel != null">
+        #{houseownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerdesc != null">
+        #{houseownerdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="houseowneraddress != null">
+        #{houseowneraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerrole != null">
+        #{houseownerrole,jdbcType=BIGINT},
+      </if>
+      <if test="houseownerlastlogintime != null">
+        #{houseownerlastlogintime,jdbcType=DATE},
+      </if>
+      <if test="registdate != null">
+        #{registdate,jdbcType=DATE},
+      </if>
+      <if test="checkopion != null">
+        #{checkopion,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerid != null">
+        #{checkerid,jdbcType=BIGINT},
+      </if>
+      <if test="checkername != null">
+        #{checkername,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null">
+        #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="houseownerimage != null">
+        #{houseownerimage,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownertwodimensionalcode != null">
+        #{houseownertwodimensionalcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunzhu.house.model.HouseownerExample" resultType="java.lang.Long">
+    select count(*) from houseowner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update houseowner
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.houseownercode != null">
+        houseOwnerCode = #{row.houseownercode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownerpassword != null">
+        houseOwnerPassWord = #{row.houseownerpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownername != null">
+        houseOwnerName = #{row.houseownername,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseowneridentify != null">
+        houseOwnerIdentify = #{row.houseowneridentify,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownertel != null">
+        houseOwnerTel = #{row.houseownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownerdesc != null">
+        houseOwnerDesc = #{row.houseownerdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseowneraddress != null">
+        houseOwnerAddress = #{row.houseowneraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownerrole != null">
+        houseOwnerRole = #{row.houseownerrole,jdbcType=BIGINT},
+      </if>
+      <if test="row.houseownerlastlogintime != null">
+        houseOwnerLastLoginTime = #{row.houseownerlastlogintime,jdbcType=DATE},
+      </if>
+      <if test="row.registdate != null">
+        registDate = #{row.registdate,jdbcType=DATE},
+      </if>
+      <if test="row.checkopion != null">
+        checkOpion = #{row.checkopion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.checkerid != null">
+        checkerId = #{row.checkerid,jdbcType=BIGINT},
+      </if>
+      <if test="row.checkername != null">
+        checkerName = #{row.checkername,jdbcType=VARCHAR},
+      </if>
+      <if test="row.checkdate != null">
+        checkDate = #{row.checkdate,jdbcType=DATE},
+      </if>
+      <if test="row.houseownerimage != null">
+        houseOwnerImage = #{row.houseownerimage,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownertwodimensionalcode != null">
+        houseOwnerTwoDimensionalCode = #{row.houseownertwodimensionalcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update houseowner
+    set id = #{row.id,jdbcType=BIGINT},
+      houseOwnerCode = #{row.houseownercode,jdbcType=VARCHAR},
+      houseOwnerPassWord = #{row.houseownerpassword,jdbcType=VARCHAR},
+      houseOwnerName = #{row.houseownername,jdbcType=VARCHAR},
+      houseOwnerIdentify = #{row.houseowneridentify,jdbcType=VARCHAR},
+      houseOwnerTel = #{row.houseownertel,jdbcType=VARCHAR},
+      houseOwnerDesc = #{row.houseownerdesc,jdbcType=VARCHAR},
+      houseOwnerAddress = #{row.houseowneraddress,jdbcType=VARCHAR},
+      houseOwnerRole = #{row.houseownerrole,jdbcType=BIGINT},
+      houseOwnerLastLoginTime = #{row.houseownerlastlogintime,jdbcType=DATE},
+      registDate = #{row.registdate,jdbcType=DATE},
+      checkOpion = #{row.checkopion,jdbcType=VARCHAR},
+      checkerId = #{row.checkerid,jdbcType=BIGINT},
+      checkerName = #{row.checkername,jdbcType=VARCHAR},
+      checkDate = #{row.checkdate,jdbcType=DATE},
+      houseOwnerImage = #{row.houseownerimage,jdbcType=VARCHAR},
+      houseOwnerTwoDimensionalCode = #{row.houseownertwodimensionalcode,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunzhu.house.model.Houseowner">
+    update houseowner
+    <set>
+      <if test="houseownercode != null">
+        houseOwnerCode = #{houseownercode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerpassword != null">
+        houseOwnerPassWord = #{houseownerpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownername != null">
+        houseOwnerName = #{houseownername,jdbcType=VARCHAR},
+      </if>
+      <if test="houseowneridentify != null">
+        houseOwnerIdentify = #{houseowneridentify,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownertel != null">
+        houseOwnerTel = #{houseownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerdesc != null">
+        houseOwnerDesc = #{houseownerdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="houseowneraddress != null">
+        houseOwnerAddress = #{houseowneraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerrole != null">
+        houseOwnerRole = #{houseownerrole,jdbcType=BIGINT},
+      </if>
+      <if test="houseownerlastlogintime != null">
+        houseOwnerLastLoginTime = #{houseownerlastlogintime,jdbcType=DATE},
+      </if>
+      <if test="registdate != null">
+        registDate = #{registdate,jdbcType=DATE},
+      </if>
+      <if test="checkopion != null">
+        checkOpion = #{checkopion,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerid != null">
+        checkerId = #{checkerid,jdbcType=BIGINT},
+      </if>
+      <if test="checkername != null">
+        checkerName = #{checkername,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null">
+        checkDate = #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="houseownerimage != null">
+        houseOwnerImage = #{houseownerimage,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownertwodimensionalcode != null">
+        houseOwnerTwoDimensionalCode = #{houseownertwodimensionalcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunzhu.house.model.Houseowner">
+    update houseowner
+    set houseOwnerCode = #{houseownercode,jdbcType=VARCHAR},
+      houseOwnerPassWord = #{houseownerpassword,jdbcType=VARCHAR},
+      houseOwnerName = #{houseownername,jdbcType=VARCHAR},
+      houseOwnerIdentify = #{houseowneridentify,jdbcType=VARCHAR},
+      houseOwnerTel = #{houseownertel,jdbcType=VARCHAR},
+      houseOwnerDesc = #{houseownerdesc,jdbcType=VARCHAR},
+      houseOwnerAddress = #{houseowneraddress,jdbcType=VARCHAR},
+      houseOwnerRole = #{houseownerrole,jdbcType=BIGINT},
+      houseOwnerLastLoginTime = #{houseownerlastlogintime,jdbcType=DATE},
+      registDate = #{registdate,jdbcType=DATE},
+      checkOpion = #{checkopion,jdbcType=VARCHAR},
+      checkerId = #{checkerid,jdbcType=BIGINT},
+      checkerName = #{checkername,jdbcType=VARCHAR},
+      checkDate = #{checkdate,jdbcType=DATE},
+      houseOwnerImage = #{houseownerimage,jdbcType=VARCHAR},
+      houseOwnerTwoDimensionalCode = #{houseownertwodimensionalcode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

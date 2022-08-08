@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yunzhu.house.mapper.HousetypeMapper">
-  <resultMap id="BaseResultMap" type="com.yunzhu.house.model.Housetype">
+<mapper namespace="com.yunzhu.house.mapper.RoleAuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.yunzhu.house.model.RoleAuthority">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="houseTypeName" jdbcType="VARCHAR" property="housetypename" />
-    <result column="houseTypeDesc" jdbcType="VARCHAR" property="housetypedesc" />
+    <result column="authority_id" jdbcType="VARCHAR" property="authorityId" />
+    <result column="role" jdbcType="SMALLINT" property="role" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, houseTypeName, houseTypeDesc
+    id, authority_id, role
   </sql>
-  <select id="selectByExample" parameterType="com.yunzhu.house.model.HousetypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yunzhu.house.model.RoleAuthorityExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from housetype
+    from role_authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,65 +84,65 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from housetype
+    from role_authority
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from housetype
+    delete from role_authority
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yunzhu.house.model.HousetypeExample">
-    delete from housetype
+  <delete id="deleteByExample" parameterType="com.yunzhu.house.model.RoleAuthorityExample">
+    delete from role_authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yunzhu.house.model.Housetype">
+  <insert id="insert" parameterType="com.yunzhu.house.model.RoleAuthority">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into housetype (houseTypeName, houseTypeDesc)
-    values (#{housetypename,jdbcType=VARCHAR}, #{housetypedesc,jdbcType=VARCHAR})
+    insert into role_authority (authority_id, role)
+    values (#{authorityId,jdbcType=VARCHAR}, #{role,jdbcType=SMALLINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yunzhu.house.model.Housetype">
+  <insert id="insertSelective" parameterType="com.yunzhu.house.model.RoleAuthority">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into housetype
+    insert into role_authority
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="housetypename != null">
-        houseTypeName,
+      <if test="authorityId != null">
+        authority_id,
       </if>
-      <if test="housetypedesc != null">
-        houseTypeDesc,
+      <if test="role != null">
+        role,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="housetypename != null">
-        #{housetypename,jdbcType=VARCHAR},
+      <if test="authorityId != null">
+        #{authorityId,jdbcType=VARCHAR},
       </if>
-      <if test="housetypedesc != null">
-        #{housetypedesc,jdbcType=VARCHAR},
+      <if test="role != null">
+        #{role,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yunzhu.house.model.HousetypeExample" resultType="java.lang.Long">
-    select count(*) from housetype
+  <select id="countByExample" parameterType="com.yunzhu.house.model.RoleAuthorityExample" resultType="java.lang.Long">
+    select count(*) from role_authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update housetype
+    update role_authority
     <set>
       <if test="row.id != null">
         id = #{row.id,jdbcType=BIGINT},
       </if>
-      <if test="row.housetypename != null">
-        houseTypeName = #{row.housetypename,jdbcType=VARCHAR},
+      <if test="row.authorityId != null">
+        authority_id = #{row.authorityId,jdbcType=VARCHAR},
       </if>
-      <if test="row.housetypedesc != null">
-        houseTypeDesc = #{row.housetypedesc,jdbcType=VARCHAR},
+      <if test="row.role != null">
+        role = #{row.role,jdbcType=SMALLINT},
       </if>
     </set>
     <if test="example != null">
@@ -150,30 +150,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update housetype
+    update role_authority
     set id = #{row.id,jdbcType=BIGINT},
-      houseTypeName = #{row.housetypename,jdbcType=VARCHAR},
-      houseTypeDesc = #{row.housetypedesc,jdbcType=VARCHAR}
+      authority_id = #{row.authorityId,jdbcType=VARCHAR},
+      role = #{row.role,jdbcType=SMALLINT}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yunzhu.house.model.Housetype">
-    update housetype
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunzhu.house.model.RoleAuthority">
+    update role_authority
     <set>
-      <if test="housetypename != null">
-        houseTypeName = #{housetypename,jdbcType=VARCHAR},
+      <if test="authorityId != null">
+        authority_id = #{authorityId,jdbcType=VARCHAR},
       </if>
-      <if test="housetypedesc != null">
-        houseTypeDesc = #{housetypedesc,jdbcType=VARCHAR},
+      <if test="role != null">
+        role = #{role,jdbcType=SMALLINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yunzhu.house.model.Housetype">
-    update housetype
-    set houseTypeName = #{housetypename,jdbcType=VARCHAR},
-      houseTypeDesc = #{housetypedesc,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yunzhu.house.model.RoleAuthority">
+    update role_authority
+    set authority_id = #{authorityId,jdbcType=VARCHAR},
+      role = #{role,jdbcType=SMALLINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

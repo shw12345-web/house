@@ -3,14 +3,14 @@ package com.yunzhu.house.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HousetypeExample {
+public class HousetypeHouseExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public HousetypeExample() {
+    public HousetypeHouseExample() {
         oredCriteria = new ArrayList<>();
     }
 
@@ -164,143 +164,123 @@ public class HousetypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameIsNull() {
-            addCriterion("houseTypeName is null");
+        public Criteria andHousetypeidIsNull() {
+            addCriterion("houseTypeId is null");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameIsNotNull() {
-            addCriterion("houseTypeName is not null");
+        public Criteria andHousetypeidIsNotNull() {
+            addCriterion("houseTypeId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameEqualTo(String value) {
-            addCriterion("houseTypeName =", value, "housetypename");
+        public Criteria andHousetypeidEqualTo(Long value) {
+            addCriterion("houseTypeId =", value, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameNotEqualTo(String value) {
-            addCriterion("houseTypeName <>", value, "housetypename");
+        public Criteria andHousetypeidNotEqualTo(Long value) {
+            addCriterion("houseTypeId <>", value, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameGreaterThan(String value) {
-            addCriterion("houseTypeName >", value, "housetypename");
+        public Criteria andHousetypeidGreaterThan(Long value) {
+            addCriterion("houseTypeId >", value, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameGreaterThanOrEqualTo(String value) {
-            addCriterion("houseTypeName >=", value, "housetypename");
+        public Criteria andHousetypeidGreaterThanOrEqualTo(Long value) {
+            addCriterion("houseTypeId >=", value, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameLessThan(String value) {
-            addCriterion("houseTypeName <", value, "housetypename");
+        public Criteria andHousetypeidLessThan(Long value) {
+            addCriterion("houseTypeId <", value, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameLessThanOrEqualTo(String value) {
-            addCriterion("houseTypeName <=", value, "housetypename");
+        public Criteria andHousetypeidLessThanOrEqualTo(Long value) {
+            addCriterion("houseTypeId <=", value, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameLike(String value) {
-            addCriterion("houseTypeName like", value, "housetypename");
+        public Criteria andHousetypeidIn(List<Long> values) {
+            addCriterion("houseTypeId in", values, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameNotLike(String value) {
-            addCriterion("houseTypeName not like", value, "housetypename");
+        public Criteria andHousetypeidNotIn(List<Long> values) {
+            addCriterion("houseTypeId not in", values, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameIn(List<String> values) {
-            addCriterion("houseTypeName in", values, "housetypename");
+        public Criteria andHousetypeidBetween(Long value1, Long value2) {
+            addCriterion("houseTypeId between", value1, value2, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameNotIn(List<String> values) {
-            addCriterion("houseTypeName not in", values, "housetypename");
+        public Criteria andHousetypeidNotBetween(Long value1, Long value2) {
+            addCriterion("houseTypeId not between", value1, value2, "housetypeid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameBetween(String value1, String value2) {
-            addCriterion("houseTypeName between", value1, value2, "housetypename");
+        public Criteria andHouseidIsNull() {
+            addCriterion("houseId is null");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypenameNotBetween(String value1, String value2) {
-            addCriterion("houseTypeName not between", value1, value2, "housetypename");
+        public Criteria andHouseidIsNotNull() {
+            addCriterion("houseId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescIsNull() {
-            addCriterion("houseTypeDesc is null");
+        public Criteria andHouseidEqualTo(Long value) {
+            addCriterion("houseId =", value, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescIsNotNull() {
-            addCriterion("houseTypeDesc is not null");
+        public Criteria andHouseidNotEqualTo(Long value) {
+            addCriterion("houseId <>", value, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescEqualTo(String value) {
-            addCriterion("houseTypeDesc =", value, "housetypedesc");
+        public Criteria andHouseidGreaterThan(Long value) {
+            addCriterion("houseId >", value, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescNotEqualTo(String value) {
-            addCriterion("houseTypeDesc <>", value, "housetypedesc");
+        public Criteria andHouseidGreaterThanOrEqualTo(Long value) {
+            addCriterion("houseId >=", value, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescGreaterThan(String value) {
-            addCriterion("houseTypeDesc >", value, "housetypedesc");
+        public Criteria andHouseidLessThan(Long value) {
+            addCriterion("houseId <", value, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescGreaterThanOrEqualTo(String value) {
-            addCriterion("houseTypeDesc >=", value, "housetypedesc");
+        public Criteria andHouseidLessThanOrEqualTo(Long value) {
+            addCriterion("houseId <=", value, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescLessThan(String value) {
-            addCriterion("houseTypeDesc <", value, "housetypedesc");
+        public Criteria andHouseidIn(List<Long> values) {
+            addCriterion("houseId in", values, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescLessThanOrEqualTo(String value) {
-            addCriterion("houseTypeDesc <=", value, "housetypedesc");
+        public Criteria andHouseidNotIn(List<Long> values) {
+            addCriterion("houseId not in", values, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescLike(String value) {
-            addCriterion("houseTypeDesc like", value, "housetypedesc");
+        public Criteria andHouseidBetween(Long value1, Long value2) {
+            addCriterion("houseId between", value1, value2, "houseid");
             return (Criteria) this;
         }
 
-        public Criteria andHousetypedescNotLike(String value) {
-            addCriterion("houseTypeDesc not like", value, "housetypedesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andHousetypedescIn(List<String> values) {
-            addCriterion("houseTypeDesc in", values, "housetypedesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andHousetypedescNotIn(List<String> values) {
-            addCriterion("houseTypeDesc not in", values, "housetypedesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andHousetypedescBetween(String value1, String value2) {
-            addCriterion("houseTypeDesc between", value1, value2, "housetypedesc");
-            return (Criteria) this;
-        }
-
-        public Criteria andHousetypedescNotBetween(String value1, String value2) {
-            addCriterion("houseTypeDesc not between", value1, value2, "housetypedesc");
+        public Criteria andHouseidNotBetween(Long value1, Long value2) {
+            addCriterion("houseId not between", value1, value2, "houseid");
             return (Criteria) this;
         }
     }

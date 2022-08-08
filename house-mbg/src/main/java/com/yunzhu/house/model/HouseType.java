@@ -3,7 +3,7 @@ package com.yunzhu.house.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
-public class HouseType implements Serializable {
+public class Housetype implements Serializable {
     private Long id;
 
     @ApiModelProperty(value = "房屋类型")

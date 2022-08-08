@@ -3,15 +3,14 @@ package com.yunzhu.house.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
-public class HouseRoom implements Serializable {
-    @ApiModelProperty(value = "主键ID")
+public class HousetypeHouse implements Serializable {
     private Long id;
 
-    @ApiModelProperty(value = "房源ID")
-    private Integer houseid;
+    @ApiModelProperty(value = "房间类型")
+    private Long housetypeid;
 
-    @ApiModelProperty(value = "房间ID")
-    private Integer roomid;
+    @ApiModelProperty(value = "房屋ID")
+    private Long houseid;
 
     private static final long serialVersionUID = 1L;
 
@@ -23,20 +22,20 @@ public class HouseRoom implements Serializable {
         this.id = id;
     }
 
-    public Integer getHouseid() {
+    public Long getHousetypeid() {
+        return housetypeid;
+    }
+
+    public void setHousetypeid(Long housetypeid) {
+        this.housetypeid = housetypeid;
+    }
+
+    public Long getHouseid() {
         return houseid;
     }
 
-    public void setHouseid(Integer houseid) {
+    public void setHouseid(Long houseid) {
         this.houseid = houseid;
-    }
-
-    public Integer getRoomid() {
-        return roomid;
-    }
-
-    public void setRoomid(Integer roomid) {
-        this.roomid = roomid;
     }
 
     @Override
@@ -46,8 +45,8 @@ public class HouseRoom implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", housetypeid=").append(housetypeid);
         sb.append(", houseid=").append(houseid);
-        sb.append(", roomid=").append(roomid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

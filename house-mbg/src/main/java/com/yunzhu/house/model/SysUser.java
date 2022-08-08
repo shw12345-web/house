@@ -7,18 +7,25 @@ import java.util.Date;
 public class SysUser implements Serializable {
     private Integer id;
 
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
+    @ApiModelProperty(value = "最后登录时间")
     private Date lastLogintime;
 
+    @ApiModelProperty(value = "密码")
     private String password;
 
+    @ApiModelProperty(value = "真是姓名")
     private String realName;
 
+    @ApiModelProperty(value = "角色")
     private Short role;
 
+    @ApiModelProperty(value = "电话号码")
     private String tel;
 
+    @ApiModelProperty(value = "用户名称")
     private String userName;
 
     @ApiModelProperty(value = "部门ID")
