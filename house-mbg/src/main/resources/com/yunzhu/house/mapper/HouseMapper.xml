@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yunzhu.house.mapper.HouseMapper">
+  <resultMap id="BaseResultMap" type="com.yunzhu.house.model.House">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="houseTypeId" jdbcType="BIGINT" property="housetypeid" />
+    <result column="houseTypeName" jdbcType="VARCHAR" property="housetypename" />
+    <result column="houseAddress" jdbcType="VARCHAR" property="houseaddress" />
+    <result column="houseCity" jdbcType="VARCHAR" property="housecity" />
+    <result column="houseFloor" jdbcType="VARCHAR" property="housefloor" />
+    <result column="buildingNumber" jdbcType="VARCHAR" property="buildingnumber" />
+    <result column="expectedRent" jdbcType="DECIMAL" property="expectedrent" />
+    <result column="houseArea" jdbcType="VARCHAR" property="housearea" />
+    <result column="houseType" jdbcType="VARCHAR" property="housetype" />
+    <result column="houseUnit" jdbcType="VARCHAR" property="houseunit" />
+    <result column="houseNumber" jdbcType="VARCHAR" property="housenumber" />
+    <result column="houseName" jdbcType="VARCHAR" property="housename" />
+    <result column="houseDesc" jdbcType="VARCHAR" property="housedesc" />
+    <result column="houseMapLocation" jdbcType="VARCHAR" property="housemaplocation" />
+    <result column="houseTwoDimensionalCode" jdbcType="VARCHAR" property="housetwodimensionalcode" />
+    <result column="houseImage" jdbcType="VARCHAR" property="houseimage" />
+    <result column="houseOwnerId" jdbcType="BIGINT" property="houseownerid" />
+    <result column="houseOwnerName" jdbcType="VARCHAR" property="houseownername" />
+    <result column="registDate" jdbcType="DATE" property="registdate" />
+    <result column="departmentId" jdbcType="BIGINT" property="departmentid" />
+    <result column="departmentName" jdbcType="VARCHAR" property="departmentname" />
+    <result column="checkOpion" jdbcType="VARCHAR" property="checkopion" />
+    <result column="checkerId" jdbcType="BIGINT" property="checkerid" />
+    <result column="checkerName" jdbcType="VARCHAR" property="checkername" />
+    <result column="checkDate" jdbcType="DATE" property="checkdate" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, houseTypeId, houseTypeName, houseAddress, houseCity, houseFloor, buildingNumber, 
+    expectedRent, houseArea, houseType, houseUnit, houseNumber, houseName, houseDesc, 
+    houseMapLocation, houseTwoDimensionalCode, houseImage, houseOwnerId, houseOwnerName, 
+    registDate, departmentId, departmentName, checkOpion, checkerId, checkerName, checkDate, 
+    status
+  </sql>
+  <select id="selectByExample" parameterType="com.yunzhu.house.model.HouseExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from house
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from house
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from house
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yunzhu.house.model.HouseExample">
+    delete from house
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yunzhu.house.model.House">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into house (houseTypeId, houseTypeName, houseAddress, 
+      houseCity, houseFloor, buildingNumber, 
+      expectedRent, houseArea, houseType, 
+      houseUnit, houseNumber, houseName, 
+      houseDesc, houseMapLocation, houseTwoDimensionalCode, 
+      houseImage, houseOwnerId, houseOwnerName, 
+      registDate, departmentId, departmentName, 
+      checkOpion, checkerId, checkerName, 
+      checkDate, status)
+    values (#{housetypeid,jdbcType=BIGINT}, #{housetypename,jdbcType=VARCHAR}, #{houseaddress,jdbcType=VARCHAR}, 
+      #{housecity,jdbcType=VARCHAR}, #{housefloor,jdbcType=VARCHAR}, #{buildingnumber,jdbcType=VARCHAR}, 
+      #{expectedrent,jdbcType=DECIMAL}, #{housearea,jdbcType=VARCHAR}, #{housetype,jdbcType=VARCHAR}, 
+      #{houseunit,jdbcType=VARCHAR}, #{housenumber,jdbcType=VARCHAR}, #{housename,jdbcType=VARCHAR}, 
+      #{housedesc,jdbcType=VARCHAR}, #{housemaplocation,jdbcType=VARCHAR}, #{housetwodimensionalcode,jdbcType=VARCHAR}, 
+      #{houseimage,jdbcType=VARCHAR}, #{houseownerid,jdbcType=BIGINT}, #{houseownername,jdbcType=VARCHAR}, 
+      #{registdate,jdbcType=DATE}, #{departmentid,jdbcType=BIGINT}, #{departmentname,jdbcType=VARCHAR}, 
+      #{checkopion,jdbcType=VARCHAR}, #{checkerid,jdbcType=BIGINT}, #{checkername,jdbcType=VARCHAR}, 
+      #{checkdate,jdbcType=DATE}, #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yunzhu.house.model.House">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="housetypeid != null">
+        houseTypeId,
+      </if>
+      <if test="housetypename != null">
+        houseTypeName,
+      </if>
+      <if test="houseaddress != null">
+        houseAddress,
+      </if>
+      <if test="housecity != null">
+        houseCity,
+      </if>
+      <if test="housefloor != null">
+        houseFloor,
+      </if>
+      <if test="buildingnumber != null">
+        buildingNumber,
+      </if>
+      <if test="expectedrent != null">
+        expectedRent,
+      </if>
+      <if test="housearea != null">
+        houseArea,
+      </if>
+      <if test="housetype != null">
+        houseType,
+      </if>
+      <if test="houseunit != null">
+        houseUnit,
+      </if>
+      <if test="housenumber != null">
+        houseNumber,
+      </if>
+      <if test="housename != null">
+        houseName,
+      </if>
+      <if test="housedesc != null">
+        houseDesc,
+      </if>
+      <if test="housemaplocation != null">
+        houseMapLocation,
+      </if>
+      <if test="housetwodimensionalcode != null">
+        houseTwoDimensionalCode,
+      </if>
+      <if test="houseimage != null">
+        houseImage,
+      </if>
+      <if test="houseownerid != null">
+        houseOwnerId,
+      </if>
+      <if test="houseownername != null">
+        houseOwnerName,
+      </if>
+      <if test="registdate != null">
+        registDate,
+      </if>
+      <if test="departmentid != null">
+        departmentId,
+      </if>
+      <if test="departmentname != null">
+        departmentName,
+      </if>
+      <if test="checkopion != null">
+        checkOpion,
+      </if>
+      <if test="checkerid != null">
+        checkerId,
+      </if>
+      <if test="checkername != null">
+        checkerName,
+      </if>
+      <if test="checkdate != null">
+        checkDate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="housetypeid != null">
+        #{housetypeid,jdbcType=BIGINT},
+      </if>
+      <if test="housetypename != null">
+        #{housetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="houseaddress != null">
+        #{houseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="housecity != null">
+        #{housecity,jdbcType=VARCHAR},
+      </if>
+      <if test="housefloor != null">
+        #{housefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingnumber != null">
+        #{buildingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedrent != null">
+        #{expectedrent,jdbcType=DECIMAL},
+      </if>
+      <if test="housearea != null">
+        #{housearea,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null">
+        #{housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="houseunit != null">
+        #{houseunit,jdbcType=VARCHAR},
+      </if>
+      <if test="housenumber != null">
+        #{housenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="housename != null">
+        #{housename,jdbcType=VARCHAR},
+      </if>
+      <if test="housedesc != null">
+        #{housedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="housemaplocation != null">
+        #{housemaplocation,jdbcType=VARCHAR},
+      </if>
+      <if test="housetwodimensionalcode != null">
+        #{housetwodimensionalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseimage != null">
+        #{houseimage,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerid != null">
+        #{houseownerid,jdbcType=BIGINT},
+      </if>
+      <if test="houseownername != null">
+        #{houseownername,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null">
+        #{registdate,jdbcType=DATE},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=BIGINT},
+      </if>
+      <if test="departmentname != null">
+        #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkopion != null">
+        #{checkopion,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerid != null">
+        #{checkerid,jdbcType=BIGINT},
+      </if>
+      <if test="checkername != null">
+        #{checkername,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null">
+        #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yunzhu.house.model.HouseExample" resultType="java.lang.Long">
+    select count(*) from house
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update house
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.housetypeid != null">
+        houseTypeId = #{row.housetypeid,jdbcType=BIGINT},
+      </if>
+      <if test="row.housetypename != null">
+        houseTypeName = #{row.housetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseaddress != null">
+        houseAddress = #{row.houseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housecity != null">
+        houseCity = #{row.housecity,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housefloor != null">
+        houseFloor = #{row.housefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="row.buildingnumber != null">
+        buildingNumber = #{row.buildingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="row.expectedrent != null">
+        expectedRent = #{row.expectedrent,jdbcType=DECIMAL},
+      </if>
+      <if test="row.housearea != null">
+        houseArea = #{row.housearea,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housetype != null">
+        houseType = #{row.housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseunit != null">
+        houseUnit = #{row.houseunit,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housenumber != null">
+        houseNumber = #{row.housenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housename != null">
+        houseName = #{row.housename,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housedesc != null">
+        houseDesc = #{row.housedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housemaplocation != null">
+        houseMapLocation = #{row.housemaplocation,jdbcType=VARCHAR},
+      </if>
+      <if test="row.housetwodimensionalcode != null">
+        houseTwoDimensionalCode = #{row.housetwodimensionalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseimage != null">
+        houseImage = #{row.houseimage,jdbcType=VARCHAR},
+      </if>
+      <if test="row.houseownerid != null">
+        houseOwnerId = #{row.houseownerid,jdbcType=BIGINT},
+      </if>
+      <if test="row.houseownername != null">
+        houseOwnerName = #{row.houseownername,jdbcType=VARCHAR},
+      </if>
+      <if test="row.registdate != null">
+        registDate = #{row.registdate,jdbcType=DATE},
+      </if>
+      <if test="row.departmentid != null">
+        departmentId = #{row.departmentid,jdbcType=BIGINT},
+      </if>
+      <if test="row.departmentname != null">
+        departmentName = #{row.departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="row.checkopion != null">
+        checkOpion = #{row.checkopion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.checkerid != null">
+        checkerId = #{row.checkerid,jdbcType=BIGINT},
+      </if>
+      <if test="row.checkername != null">
+        checkerName = #{row.checkername,jdbcType=VARCHAR},
+      </if>
+      <if test="row.checkdate != null">
+        checkDate = #{row.checkdate,jdbcType=DATE},
+      </if>
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update house
+    set id = #{row.id,jdbcType=BIGINT},
+      houseTypeId = #{row.housetypeid,jdbcType=BIGINT},
+      houseTypeName = #{row.housetypename,jdbcType=VARCHAR},
+      houseAddress = #{row.houseaddress,jdbcType=VARCHAR},
+      houseCity = #{row.housecity,jdbcType=VARCHAR},
+      houseFloor = #{row.housefloor,jdbcType=VARCHAR},
+      buildingNumber = #{row.buildingnumber,jdbcType=VARCHAR},
+      expectedRent = #{row.expectedrent,jdbcType=DECIMAL},
+      houseArea = #{row.housearea,jdbcType=VARCHAR},
+      houseType = #{row.housetype,jdbcType=VARCHAR},
+      houseUnit = #{row.houseunit,jdbcType=VARCHAR},
+      houseNumber = #{row.housenumber,jdbcType=VARCHAR},
+      houseName = #{row.housename,jdbcType=VARCHAR},
+      houseDesc = #{row.housedesc,jdbcType=VARCHAR},
+      houseMapLocation = #{row.housemaplocation,jdbcType=VARCHAR},
+      houseTwoDimensionalCode = #{row.housetwodimensionalcode,jdbcType=VARCHAR},
+      houseImage = #{row.houseimage,jdbcType=VARCHAR},
+      houseOwnerId = #{row.houseownerid,jdbcType=BIGINT},
+      houseOwnerName = #{row.houseownername,jdbcType=VARCHAR},
+      registDate = #{row.registdate,jdbcType=DATE},
+      departmentId = #{row.departmentid,jdbcType=BIGINT},
+      departmentName = #{row.departmentname,jdbcType=VARCHAR},
+      checkOpion = #{row.checkopion,jdbcType=VARCHAR},
+      checkerId = #{row.checkerid,jdbcType=BIGINT},
+      checkerName = #{row.checkername,jdbcType=VARCHAR},
+      checkDate = #{row.checkdate,jdbcType=DATE},
+      status = #{row.status,jdbcType=TINYINT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yunzhu.house.model.House">
+    update house
+    <set>
+      <if test="housetypeid != null">
+        houseTypeId = #{housetypeid,jdbcType=BIGINT},
+      </if>
+      <if test="housetypename != null">
+        houseTypeName = #{housetypename,jdbcType=VARCHAR},
+      </if>
+      <if test="houseaddress != null">
+        houseAddress = #{houseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="housecity != null">
+        houseCity = #{housecity,jdbcType=VARCHAR},
+      </if>
+      <if test="housefloor != null">
+        houseFloor = #{housefloor,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingnumber != null">
+        buildingNumber = #{buildingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedrent != null">
+        expectedRent = #{expectedrent,jdbcType=DECIMAL},
+      </if>
+      <if test="housearea != null">
+        houseArea = #{housearea,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null">
+        houseType = #{housetype,jdbcType=VARCHAR},
+      </if>
+      <if test="houseunit != null">
+        houseUnit = #{houseunit,jdbcType=VARCHAR},
+      </if>
+      <if test="housenumber != null">
+        houseNumber = #{housenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="housename != null">
+        houseName = #{housename,jdbcType=VARCHAR},
+      </if>
+      <if test="housedesc != null">
+        houseDesc = #{housedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="housemaplocation != null">
+        houseMapLocation = #{housemaplocation,jdbcType=VARCHAR},
+      </if>
+      <if test="housetwodimensionalcode != null">
+        houseTwoDimensionalCode = #{housetwodimensionalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="houseimage != null">
+        houseImage = #{houseimage,jdbcType=VARCHAR},
+      </if>
+      <if test="houseownerid != null">
+        houseOwnerId = #{houseownerid,jdbcType=BIGINT},
+      </if>
+      <if test="houseownername != null">
+        houseOwnerName = #{houseownername,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null">
+        registDate = #{registdate,jdbcType=DATE},
+      </if>
+      <if test="departmentid != null">
+        departmentId = #{departmentid,jdbcType=BIGINT},
+      </if>
+      <if test="departmentname != null">
+        departmentName = #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="checkopion != null">
+        checkOpion = #{checkopion,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerid != null">
+        checkerId = #{checkerid,jdbcType=BIGINT},
+      </if>
+      <if test="checkername != null">
+        checkerName = #{checkername,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null">
+        checkDate = #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yunzhu.house.model.House">
+    update house
+    set houseTypeId = #{housetypeid,jdbcType=BIGINT},
+      houseTypeName = #{housetypename,jdbcType=VARCHAR},
+      houseAddress = #{houseaddress,jdbcType=VARCHAR},
+      houseCity = #{housecity,jdbcType=VARCHAR},
+      houseFloor = #{housefloor,jdbcType=VARCHAR},
+      buildingNumber = #{buildingnumber,jdbcType=VARCHAR},
+      expectedRent = #{expectedrent,jdbcType=DECIMAL},
+      houseArea = #{housearea,jdbcType=VARCHAR},
+      houseType = #{housetype,jdbcType=VARCHAR},
+      houseUnit = #{houseunit,jdbcType=VARCHAR},
+      houseNumber = #{housenumber,jdbcType=VARCHAR},
+      houseName = #{housename,jdbcType=VARCHAR},
+      houseDesc = #{housedesc,jdbcType=VARCHAR},
+      houseMapLocation = #{housemaplocation,jdbcType=VARCHAR},
+      houseTwoDimensionalCode = #{housetwodimensionalcode,jdbcType=VARCHAR},
+      houseImage = #{houseimage,jdbcType=VARCHAR},
+      houseOwnerId = #{houseownerid,jdbcType=BIGINT},
+      houseOwnerName = #{houseownername,jdbcType=VARCHAR},
+      registDate = #{registdate,jdbcType=DATE},
+      departmentId = #{departmentid,jdbcType=BIGINT},
+      departmentName = #{departmentname,jdbcType=VARCHAR},
+      checkOpion = #{checkopion,jdbcType=VARCHAR},
+      checkerId = #{checkerid,jdbcType=BIGINT},
+      checkerName = #{checkername,jdbcType=VARCHAR},
+      checkDate = #{checkdate,jdbcType=DATE},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
