@@ -19,7 +19,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.macro.mall.controller")
+                .apiBasePackage("com.yunzhu.house.controller")
                 .title("mall后台系统")
                 .description("mall后台相关接口文档")
                 .contactName("macro")
