@@ -22,8 +22,6 @@ public class ConstantWxPropertiesUtils implements InitializingBean {
     @Value("${wx.open.redirect_url}")
     private String redirectUrl;
 
-    @Value("${yygh.baseUrl}")
-    private String yyghBaseUrl;
 
 
     public static String WX_OPEN_APP_ID;
@@ -37,6 +35,5 @@ public class ConstantWxPropertiesUtils implements InitializingBean {
         WX_OPEN_APP_ID = appId;
         WX_OPEN_APP_SECRET = appSecret;
         WX_OPEN_REDIRECT_URL = redirectUrl;
-        YYGH_BASE_URL = yyghBaseUrl;
     }
 }
