@@ -1,6 +1,5 @@
 package com.yunzhu.house.portal.service.impl;
 
-import com.yunzhu.house.common.api.CommonResult;
 import com.yunzhu.house.portal.service.MsmService;
 import com.yunzhu.house.portal.service.SendSmsService;
 import org.springframework.beans.factory.annotation.Autowired;

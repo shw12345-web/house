@@ -3,12 +3,14 @@ package com.yunzhu.house.util;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -85,6 +87,18 @@ public class JwtTokenUtil {
             username = null;
         }
         return username;
+    }
+
+
+    //根据token字符串得到用户id
+    public  Long getUserId(String token) {
+        if(StringUtils.isEmpty(token)) {
+            return null;
+        }
+        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+        Claims claims = claimsJws.getBody();
+        Integer userId = (Integer)claims.get("userId");
+        return userId.longValue();
     }
 
     /**

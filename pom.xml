@@ -49,6 +49,7 @@
         <house-common.version>1.0-SNAPSHOT</house-common.version>
         <house-mbg.version>1.0-SNAPSHOT</house-mbg.version>
         <house-security.version>1.0-SNAPSHOT</house-security.version>
+        <mybatis-plus.version>3.3.1</mybatis-plus.version>
     </properties>
 
     <dependencies>
@@ -99,6 +100,13 @@
                 <groupId>com.yunzhu.house</groupId>
                 <artifactId>house-security</artifactId>
                 <version>${house-security.version}</version>
+            </dependency>
+
+            <!--mybatis-plus 持久层-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
             <!--MyBatis分页插件starter-->
             <dependency>
