@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Controller
 @Api(tags = "AppUserController", description = "用户管理")
-@RequestMapping("/api/houseWoner")
+@RequestMapping("/api/user")
 public class AppUserController {
 
 

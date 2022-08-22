@@ -18,4 +18,8 @@ public interface UserInfoService {
     void userAuth(Long userId, UserAuthVo userAuthVo);
 
     SysUser getById(Long userId);
+
+    SysUser selectWxInfoOpenId(String openid);
+
+    void save(SysUser userInfo);
 }

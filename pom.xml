@@ -50,6 +50,7 @@
         <house-mbg.version>1.0-SNAPSHOT</house-mbg.version>
         <house-security.version>1.0-SNAPSHOT</house-security.version>
         <mybatis-plus.version>3.3.1</mybatis-plus.version>
+        <httpclient.version>4.5.1</httpclient.version>
     </properties>
 
     <dependencies>
@@ -107,6 +108,12 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
             </dependency>
             <!--MyBatis分页插件starter-->
             <dependency>

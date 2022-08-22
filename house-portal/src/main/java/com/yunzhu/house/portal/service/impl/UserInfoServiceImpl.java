@@ -30,4 +30,14 @@ public class UserInfoServiceImpl implements UserInfoService {
     public SysUser getById(Long userId) {
         return null;
     }
+
+    @Override
+    public SysUser selectWxInfoOpenId(String openid) {
+        return null;
+    }
+
+    @Override
+    public void save(SysUser userInfo) {
+
+    }
 }

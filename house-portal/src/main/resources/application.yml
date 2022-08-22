@@ -64,3 +64,10 @@ aliyun:
       templateCode: 'SMS_154950909'
       region: 'cn-hangzhou'
       endpoint: 'dysmsapi.aliyuncs.com'
+
+#微信授权登录
+wx:
+  open:
+    app_id: 'wxed9954c01bb89b47'
+    app_secret: 'a7482517235173ddb4083788de60b90e'
+    redirect_url: 'http://guli.shop/api/ucenter/wx/callback'

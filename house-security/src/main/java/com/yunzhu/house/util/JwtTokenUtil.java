@@ -44,7 +44,7 @@ public class JwtTokenUtil {
     /**
      * 根据负责生成JWT的token
      */
-    private String generateToken(Map<String, Object> claims) {
+    public String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())
