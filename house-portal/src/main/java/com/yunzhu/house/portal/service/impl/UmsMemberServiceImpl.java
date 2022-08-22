@@ -2,7 +2,7 @@ package com.yunzhu.house.portal.service.impl;
 
 import com.yunzhu.house.model.UmsMember;
 import com.yunzhu.house.portal.service.UmsMemberService;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
@@ -48,10 +48,10 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) {
-        return null;
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) {
+//        return null;
+//    }
 
     @Override
     public String login(String username, String password) {

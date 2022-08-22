@@ -3,7 +3,9 @@ package com.yunzhu.house.common.service.impl;
 import com.yunzhu.house.common.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,9 +17,10 @@ import java.util.concurrent.TimeUnit;
  * @author DELL
  * @date 2022/8/4 15:00
  */
+@Service
 public class RedisServiceImpl implements RedisService {
 
-    @Autowired
+    @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
     @Override

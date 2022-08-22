@@ -23,10 +23,10 @@
             <groupId>com.yunzhu.house</groupId>
             <artifactId>house-mbg</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.yunzhu.house</groupId>
-            <artifactId>house-security</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.yunzhu.house</groupId>-->
+<!--            <artifactId>house-security</artifactId>-->
+<!--        </dependency>-->
         <!--mongodb依赖配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

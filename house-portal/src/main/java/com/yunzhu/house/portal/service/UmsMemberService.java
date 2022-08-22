@@ -1,7 +1,7 @@
 package com.yunzhu.house.portal.service;
 
 import com.yunzhu.house.model.UmsMember;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -53,7 +53,7 @@ public interface UmsMemberService {
     /**
      * 获取用户信息
      */
-    UserDetails loadUserByUsername(String username);
+//    UserDetails loadUserByUsername(String username);
 
     /**
      * 登录后获取token
