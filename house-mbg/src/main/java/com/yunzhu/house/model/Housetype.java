@@ -1,8 +1,15 @@
 package com.yunzhu.house.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
+/**
+ * TODO
+ *
+ * @author DELL
+ * @date 2022/8/22 8:57
+ */
 public class Housetype implements Serializable {
     private Long id;
 
