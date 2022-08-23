@@ -1,8 +1,13 @@
 package com.yunzhu.house.portal.controller.app;
 
+import com.yunzhu.house.common.api.CommonResult;
+import com.yunzhu.house.portal.controller.BaseController;
+import com.yunzhu.house.portal.vo.LoginVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,8 +23,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @Api(tags = "AppHouseController", description = "房源信息管理")
 @RequestMapping("/house")
-public class AppHouseController {
+public class AppHouseController extends BaseController {
 
+
+
+    @ApiOperation("创建商品")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult create(@RequestBody LoginVo productParam) {
+        System.out.println(productParam);
+//        int count = productService.create(productParam);
+//        if (count > 0) {
+//            return CommonResult.success(count);
+//        } else {
+//            return CommonResult.failed();
+//        }
+        return null;
+    }
 
 
 

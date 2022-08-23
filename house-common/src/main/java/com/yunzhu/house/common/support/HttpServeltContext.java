@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * 快捷获取HttpServletRequest,HttpServletResponse
  *
  */
-public class HttpContext {
+public class HttpServeltContext {
 
     public static String getIp(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
@@ -31,7 +31,7 @@ public class HttpContext {
     }
 
     public static String getIp() {
-        return getIp(HttpContext.getRequest());
+        return getIp(HttpServeltContext.getRequest());
     }
 
     public static HttpServletResponse getResponse() throws NullPointerException {
