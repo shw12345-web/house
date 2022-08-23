@@ -1,7 +1,6 @@
 package com.yunzhu.house.portal.controller.app;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sun.deploy.net.URLEncoder;
 import com.yunzhu.house.common.api.CommonResult;
 import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.portal.service.UserInfoService;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,6 +86,7 @@ public class WeixinApiController {
                 userInfo = new SysUser();
                 userInfo.setNickName(nickname);
                 userInfo.setOpenid(openid);
+                userInfo.setHeadimgUrl(headimgurl);
                 userInfo.setStatus(1);
                 userInfoService.save(userInfo);
             }

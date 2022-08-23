@@ -925,52 +925,52 @@ public class SysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleEqualTo(Short value) {
+        public Criteria andRoleEqualTo(Integer value) {
             addCriterion("role =", value, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNotEqualTo(Short value) {
+        public Criteria andRoleNotEqualTo(Integer value) {
             addCriterion("role <>", value, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleGreaterThan(Short value) {
+        public Criteria andRoleGreaterThan(Integer value) {
             addCriterion("role >", value, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleGreaterThanOrEqualTo(Short value) {
+        public Criteria andRoleGreaterThanOrEqualTo(Integer value) {
             addCriterion("role >=", value, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleLessThan(Short value) {
+        public Criteria andRoleLessThan(Integer value) {
             addCriterion("role <", value, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleLessThanOrEqualTo(Short value) {
+        public Criteria andRoleLessThanOrEqualTo(Integer value) {
             addCriterion("role <=", value, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIn(List<Short> values) {
+        public Criteria andRoleIn(List<Integer> values) {
             addCriterion("role in", values, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNotIn(List<Short> values) {
+        public Criteria andRoleNotIn(List<Integer> values) {
             addCriterion("role not in", values, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleBetween(Short value1, Short value2) {
+        public Criteria andRoleBetween(Integer value1, Integer value2) {
             addCriterion("role between", value1, value2, "role");
             return (Criteria) this;
         }
 
-        public Criteria andRoleNotBetween(Short value1, Short value2) {
+        public Criteria andRoleNotBetween(Integer value1, Integer value2) {
             addCriterion("role not between", value1, value2, "role");
             return (Criteria) this;
         }

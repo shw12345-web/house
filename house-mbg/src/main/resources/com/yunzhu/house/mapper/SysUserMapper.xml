@@ -14,7 +14,7 @@
     <result column="last_logintime" jdbcType="TIMESTAMP" property="lastLogintime" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
-    <result column="role" jdbcType="SMALLINT" property="role" />
+    <result column="role" jdbcType="INTEGER" property="role" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="departmentId" jdbcType="BIGINT" property="departmentid" />
@@ -133,7 +133,7 @@
     values (#{openid,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{headimgUrl,jdbcType=VARCHAR}, 
       #{certificatesType,jdbcType=VARCHAR}, #{certificatesNo,jdbcType=VARCHAR}, #{certificatesUrl,jdbcType=VARCHAR}, 
       #{authStatus,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{lastLogintime,jdbcType=TIMESTAMP}, 
-      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{role,jdbcType=SMALLINT}, 
+      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, 
       #{phone,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{departmentid,jdbcType=BIGINT}, 
       #{departmentname,jdbcType=VARCHAR}, #{usergrade,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
@@ -244,7 +244,7 @@
         #{realName,jdbcType=VARCHAR},
       </if>
       <if test="role != null">
-        #{role,jdbcType=SMALLINT},
+        #{role,jdbcType=INTEGER},
       </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
@@ -321,7 +321,7 @@
         real_name = #{row.realName,jdbcType=VARCHAR},
       </if>
       <if test="row.role != null">
-        role = #{row.role,jdbcType=SMALLINT},
+        role = #{row.role,jdbcType=INTEGER},
       </if>
       <if test="row.phone != null">
         phone = #{row.phone,jdbcType=VARCHAR},
@@ -369,7 +369,7 @@
       last_logintime = #{row.lastLogintime,jdbcType=TIMESTAMP},
       password = #{row.password,jdbcType=VARCHAR},
       real_name = #{row.realName,jdbcType=VARCHAR},
-      role = #{row.role,jdbcType=SMALLINT},
+      role = #{row.role,jdbcType=INTEGER},
       phone = #{row.phone,jdbcType=VARCHAR},
       user_name = #{row.userName,jdbcType=VARCHAR},
       departmentId = #{row.departmentid,jdbcType=BIGINT},
@@ -420,7 +420,7 @@
         real_name = #{realName,jdbcType=VARCHAR},
       </if>
       <if test="role != null">
-        role = #{role,jdbcType=SMALLINT},
+        role = #{role,jdbcType=INTEGER},
       </if>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
@@ -465,7 +465,7 @@
       last_logintime = #{lastLogintime,jdbcType=TIMESTAMP},
       password = #{password,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
-      role = #{role,jdbcType=SMALLINT},
+      role = #{role,jdbcType=INTEGER},
       phone = #{phone,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       departmentId = #{departmentid,jdbcType=BIGINT},

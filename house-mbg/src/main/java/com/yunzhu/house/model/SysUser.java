@@ -1,11 +1,16 @@
 package com.yunzhu.house.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
+@TableName("sys_user")
 public class SysUser implements Serializable {
     @ApiModelProperty(value = "主键")
+    @TableId(type = IdType.ASSIGN_UUID)
     private Long id;
 
     @ApiModelProperty(value = "微信openId")
@@ -42,7 +47,7 @@ public class SysUser implements Serializable {
     private String realName;
 
     @ApiModelProperty(value = "角色")
-    private Short role;
+    private Integer role;
 
     @ApiModelProperty(value = "电话号码")
     private String phone;
@@ -169,11 +174,11 @@ public class SysUser implements Serializable {
         this.realName = realName;
     }
 
-    public Short getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(Short role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 

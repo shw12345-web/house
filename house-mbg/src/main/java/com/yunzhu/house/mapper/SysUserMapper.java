@@ -1,18 +1,21 @@
 package com.yunzhu.house.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.model.SysUserExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface SysUserMapper {
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface SysUserMapper extends BaseMapper<SysUser> {
     long countByExample(SysUserExample example);
 
     int deleteByExample(SysUserExample example);
 
     int deleteByPrimaryKey(Long id);
-
-    int insert(SysUser row);
 
     int insertSelective(SysUser row);
 
