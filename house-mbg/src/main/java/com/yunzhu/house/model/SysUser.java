@@ -1,5 +1,6 @@
 package com.yunzhu.house.model;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
@@ -66,6 +67,7 @@ public class SysUser implements Serializable {
     private Date updateTime;
 
     @ApiModelProperty(value = "逻辑删除(1:已删除，0:未删除)")
+    @TableLogic
     private Integer isDeleted;
 
     @ApiModelProperty(value = "状态（0：锁定 1：正常）")

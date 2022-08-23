@@ -6,12 +6,15 @@ import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.portal.service.UserInfoService;
 import com.yunzhu.house.portal.util.ConstantWxPropertiesUtils;
 import com.yunzhu.house.portal.util.HttpClientUtils;
+import com.yunzhu.house.portal.vo.OAuthReq;
 import com.yunzhu.house.util.JwtTokenUtil;
 import io.swagger.annotations.Api;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.util.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,13 +24,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TODO
+ * 用户授权登录
  *
  * @author DELL
  * @date 2022/8/22 16:05
  */
 @Controller
-@Api(tags = "WeixinApiController", description = "微信操作的接口")
+@Api(tags = "WeixinApiController", description = "微信授权接口")
 @RequestMapping("/api/user/wx")
 public class WeixinApiController {
 
@@ -39,9 +42,10 @@ public class WeixinApiController {
 
     //微信扫描后回调的方法
     @GetMapping("/oAuth")
-    public String callback(String code) {
+    public String oAuth(@RequestBody OAuthReq oAuthReq) {
         //第一步 获取临时票据 code
-        System.out.println("code:" + code);
+        Asserts.notBlank(oAuthReq.getCode(), "code不能为空");
+        String code=oAuthReq.getCode();
         //第二步 拿着code和微信id和秘钥，请求微信固定地址 ，得到两个值
         //使用code和appid以及appscrect换取access_token
         //  %s   占位符
