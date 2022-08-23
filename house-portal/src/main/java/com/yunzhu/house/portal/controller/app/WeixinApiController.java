@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
@@ -27,6 +28,7 @@ import java.util.Map;
  */
 @Controller
 @Api(tags = "WeixinApiController", description = "微信操作的接口")
+@RequestMapping("/api/user/wx")
 public class WeixinApiController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class WeixinApiController {
     private UserInfoService userInfoService;
 
     //微信扫描后回调的方法
-    @GetMapping("callback")
+    @GetMapping("/oAuth")
     public String callback(String code) {
         //第一步 获取临时票据 code
         System.out.println("code:" + code);

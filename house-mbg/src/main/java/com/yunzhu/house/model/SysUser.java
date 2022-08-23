@@ -14,6 +14,9 @@ public class SysUser implements Serializable {
     @ApiModelProperty(value = "昵称")
     private String nickName;
 
+    @ApiModelProperty(value = "用户头像")
+    private String headimgUrl;
+
     @ApiModelProperty(value = "证件类型")
     private String certificatesType;
 
@@ -92,6 +95,14 @@ public class SysUser implements Serializable {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getHeadimgUrl() {
+        return headimgUrl;
+    }
+
+    public void setHeadimgUrl(String headimgUrl) {
+        this.headimgUrl = headimgUrl;
     }
 
     public String getCertificatesType() {
@@ -247,6 +258,7 @@ public class SysUser implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", openid=").append(openid);
         sb.append(", nickName=").append(nickName);
+        sb.append(", headimgUrl=").append(headimgUrl);
         sb.append(", certificatesType=").append(certificatesType);
         sb.append(", certificatesNo=").append(certificatesNo);
         sb.append(", certificatesUrl=").append(certificatesUrl);

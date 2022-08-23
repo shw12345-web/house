@@ -5,6 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="openid" jdbcType="VARCHAR" property="openid" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="headimg_url" jdbcType="VARCHAR" property="headimgUrl" />
     <result column="certificates_type" jdbcType="VARCHAR" property="certificatesType" />
     <result column="certificates_no" jdbcType="VARCHAR" property="certificatesNo" />
     <result column="certificates_url" jdbcType="VARCHAR" property="certificatesUrl" />
@@ -83,9 +84,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, openid, nick_name, certificates_type, certificates_no, certificates_url, auth_status, 
-    email, last_logintime, password, real_name, role, phone, user_name, departmentId, 
-    departmentName, userGrade, create_time, update_time, is_deleted, status
+    id, openid, nick_name, headimg_url, certificates_type, certificates_no, certificates_url, 
+    auth_status, email, last_logintime, password, real_name, role, phone, user_name, 
+    departmentId, departmentName, userGrade, create_time, update_time, is_deleted, status
   </sql>
   <select id="selectByExample" parameterType="com.yunzhu.house.model.SysUserExample" resultMap="BaseResultMap">
     select
@@ -121,20 +122,22 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sys_user (openid, nick_name, certificates_type, 
-      certificates_no, certificates_url, auth_status, 
-      email, last_logintime, password, 
-      real_name, role, phone, 
-      user_name, departmentId, departmentName, 
-      userGrade, create_time, update_time, 
-      is_deleted, status)
-    values (#{openid,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{certificatesType,jdbcType=VARCHAR}, 
-      #{certificatesNo,jdbcType=VARCHAR}, #{certificatesUrl,jdbcType=VARCHAR}, #{authStatus,jdbcType=INTEGER}, 
-      #{email,jdbcType=VARCHAR}, #{lastLogintime,jdbcType=TIMESTAMP}, #{password,jdbcType=VARCHAR}, 
-      #{realName,jdbcType=VARCHAR}, #{role,jdbcType=SMALLINT}, #{phone,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{departmentid,jdbcType=BIGINT}, #{departmentname,jdbcType=VARCHAR}, 
-      #{usergrade,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{isDeleted,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+    insert into sys_user (openid, nick_name, headimg_url, 
+      certificates_type, certificates_no, certificates_url, 
+      auth_status, email, last_logintime, 
+      password, real_name, role, 
+      phone, user_name, departmentId, 
+      departmentName, userGrade, create_time, 
+      update_time, is_deleted, status
+      )
+    values (#{openid,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{headimgUrl,jdbcType=VARCHAR}, 
+      #{certificatesType,jdbcType=VARCHAR}, #{certificatesNo,jdbcType=VARCHAR}, #{certificatesUrl,jdbcType=VARCHAR}, 
+      #{authStatus,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{lastLogintime,jdbcType=TIMESTAMP}, 
+      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{role,jdbcType=SMALLINT}, 
+      #{phone,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{departmentid,jdbcType=BIGINT}, 
+      #{departmentname,jdbcType=VARCHAR}, #{usergrade,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yunzhu.house.model.SysUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -147,6 +150,9 @@
       </if>
       <if test="nickName != null">
         nick_name,
+      </if>
+      <if test="headimgUrl != null">
+        headimg_url,
       </if>
       <if test="certificatesType != null">
         certificates_type,
@@ -209,6 +215,9 @@
       </if>
       <if test="nickName != null">
         #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgUrl != null">
+        #{headimgUrl,jdbcType=VARCHAR},
       </if>
       <if test="certificatesType != null">
         #{certificatesType,jdbcType=VARCHAR},
@@ -284,6 +293,9 @@
       <if test="row.nickName != null">
         nick_name = #{row.nickName,jdbcType=VARCHAR},
       </if>
+      <if test="row.headimgUrl != null">
+        headimg_url = #{row.headimgUrl,jdbcType=VARCHAR},
+      </if>
       <if test="row.certificatesType != null">
         certificates_type = #{row.certificatesType,jdbcType=VARCHAR},
       </if>
@@ -348,6 +360,7 @@
     set id = #{row.id,jdbcType=BIGINT},
       openid = #{row.openid,jdbcType=VARCHAR},
       nick_name = #{row.nickName,jdbcType=VARCHAR},
+      headimg_url = #{row.headimgUrl,jdbcType=VARCHAR},
       certificates_type = #{row.certificatesType,jdbcType=VARCHAR},
       certificates_no = #{row.certificatesNo,jdbcType=VARCHAR},
       certificates_url = #{row.certificatesUrl,jdbcType=VARCHAR},
@@ -378,6 +391,9 @@
       </if>
       <if test="nickName != null">
         nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgUrl != null">
+        headimg_url = #{headimgUrl,jdbcType=VARCHAR},
       </if>
       <if test="certificatesType != null">
         certificates_type = #{certificatesType,jdbcType=VARCHAR},
@@ -440,6 +456,7 @@
     update sys_user
     set openid = #{openid,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
+      headimg_url = #{headimgUrl,jdbcType=VARCHAR},
       certificates_type = #{certificatesType,jdbcType=VARCHAR},
       certificates_no = #{certificatesNo,jdbcType=VARCHAR},
       certificates_url = #{certificatesUrl,jdbcType=VARCHAR},

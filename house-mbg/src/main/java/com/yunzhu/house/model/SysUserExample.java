@@ -305,6 +305,76 @@ public class SysUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andHeadimgUrlIsNull() {
+            addCriterion("headimg_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlIsNotNull() {
+            addCriterion("headimg_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlEqualTo(String value) {
+            addCriterion("headimg_url =", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlNotEqualTo(String value) {
+            addCriterion("headimg_url <>", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlGreaterThan(String value) {
+            addCriterion("headimg_url >", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("headimg_url >=", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlLessThan(String value) {
+            addCriterion("headimg_url <", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlLessThanOrEqualTo(String value) {
+            addCriterion("headimg_url <=", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlLike(String value) {
+            addCriterion("headimg_url like", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlNotLike(String value) {
+            addCriterion("headimg_url not like", value, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlIn(List<String> values) {
+            addCriterion("headimg_url in", values, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlNotIn(List<String> values) {
+            addCriterion("headimg_url not in", values, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlBetween(String value1, String value2) {
+            addCriterion("headimg_url between", value1, value2, "headimgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeadimgUrlNotBetween(String value1, String value2) {
+            addCriterion("headimg_url not between", value1, value2, "headimgUrl");
+            return (Criteria) this;
+        }
+
         public Criteria andCertificatesTypeIsNull() {
             addCriterion("certificates_type is null");
             return (Criteria) this;
