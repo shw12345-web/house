@@ -1,11 +1,12 @@
 package com.yunzhu.house.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.HouseOrder;
 import com.yunzhu.house.model.HouseOrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface HouseOrderMapper {
+public interface HouseOrderMapper extends BaseMapper<HouseOrder> {
     long countByExample(HouseOrderExample example);
 
     int deleteByExample(HouseOrderExample example);

@@ -1,11 +1,12 @@
 package com.yunzhu.house.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.MonitorLog;
 import com.yunzhu.house.model.MonitorLogExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface MonitorLogMapper {
+public interface MonitorLogMapper extends BaseMapper<MonitorLog> {
     long countByExample(MonitorLogExample example);
 
     int deleteByExample(MonitorLogExample example);

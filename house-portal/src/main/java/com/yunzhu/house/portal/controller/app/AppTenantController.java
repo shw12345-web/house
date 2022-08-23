@@ -14,4 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/tenant")
 public class AppTenantController {
+
+
 }

@@ -1,11 +1,12 @@
 package com.yunzhu.house.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.HouseRoom;
 import com.yunzhu.house.model.HouseRoomExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface HouseRoomMapper {
+public interface HouseRoomMapper extends BaseMapper<HouseRoom> {
     long countByExample(HouseRoomExample example);
 
     int deleteByExample(HouseRoomExample example);

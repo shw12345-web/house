@@ -14,7 +14,6 @@ import java.util.Date;
  * @date 2022/8/4 15:29
  */
 @Data
-@ToString
 public class UmsResource implements Serializable {
 
     private static final long serialVersionUID = 1L;

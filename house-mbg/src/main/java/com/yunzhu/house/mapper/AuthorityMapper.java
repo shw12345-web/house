@@ -1,11 +1,12 @@
 package com.yunzhu.house.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.Authority;
 import com.yunzhu.house.model.AuthorityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface AuthorityMapper {
+public interface AuthorityMapper extends BaseMapper<Authority> {
     long countByExample(AuthorityExample example);
 
     int deleteByExample(AuthorityExample example);

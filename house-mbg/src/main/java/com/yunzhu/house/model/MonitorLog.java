@@ -1,8 +1,11 @@
 package com.yunzhu.house.model;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class MonitorLog implements Serializable {
     private Long id;
 
@@ -23,68 +26,4 @@ public class MonitorLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Short getLogType() {
-        return logType;
-    }
-
-    public void setLogType(Short logType) {
-        this.logType = logType;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Integer getObjectId() {
-        return objectId;
-    }
-
-    public void setObjectId(Integer objectId) {
-        this.objectId = objectId;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
-    }
-
-    public Byte getDisarm() {
-        return disarm;
-    }
-
-    public void setDisarm(Byte disarm) {
-        this.disarm = disarm;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", logType=").append(logType);
-        sb.append(", message=").append(message);
-        sb.append(", objectId=").append(objectId);
-        sb.append(", value=").append(value);
-        sb.append(", disarm=").append(disarm);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }
