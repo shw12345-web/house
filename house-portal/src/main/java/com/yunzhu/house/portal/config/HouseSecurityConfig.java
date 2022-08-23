@@ -1,8 +1,6 @@
 package com.yunzhu.house.portal.config;
 
-import com.yunzhu.house.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -12,9 +10,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class HouseSecurityConfig {
-
-    @Autowired
-    private UmsMemberService memberService;
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {

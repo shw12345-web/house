@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 房源信息
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Api(tags = "AppHouseController", description = "房源信息管理")
 @RequestMapping("/house")
 public class AppHouseController {
+
 
 
 

@@ -14,4 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Api(tags = "HouseOwnerRegController", description = "房东注册管理")
 @RequestMapping("/com/houseOwner")
 public class HouseOwnerRegController {
+
+
+
 }
