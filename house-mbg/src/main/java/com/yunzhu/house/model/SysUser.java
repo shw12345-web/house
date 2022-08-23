@@ -1,16 +1,11 @@
 package com.yunzhu.house.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("sys_user")
 public class SysUser implements Serializable {
     @ApiModelProperty(value = "主键")
-    @TableId(type = IdType.ASSIGN_UUID)
     private Long id;
 
     @ApiModelProperty(value = "微信openId")
