@@ -1,9 +1,9 @@
 package com.yunzhu.house.portal.controller.app;
 
 import com.yunzhu.house.common.api.CommonResult;
+import com.yunzhu.house.common.util.AuthContextHolder;
 import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.portal.service.UserInfoService;
-import com.yunzhu.house.portal.util.AuthContextHolder;
 import com.yunzhu.house.portal.vo.LoginVo;
 import com.yunzhu.house.portal.vo.UserAuthVo;
 import io.swagger.annotations.Api;

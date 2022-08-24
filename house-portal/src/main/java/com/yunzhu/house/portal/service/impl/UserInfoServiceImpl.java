@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yunzhu.house.common.api.ResultCode;
 import com.yunzhu.house.common.exception.ApiException;
+import com.yunzhu.house.common.helper.JwtHelper;
 import com.yunzhu.house.common.service.RedisService;
 import com.yunzhu.house.mapper.SysUserMapper;
 import com.yunzhu.house.model.SysUser;
@@ -11,7 +12,6 @@ import com.yunzhu.house.portal.domain.AuthStatusEnum;
 import com.yunzhu.house.portal.service.UserInfoService;
 import com.yunzhu.house.portal.vo.LoginVo;
 import com.yunzhu.house.portal.vo.UserAuthVo;
-import com.yunzhu.house.util.JwtTokenUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +28,6 @@ import java.util.Map;
 @Service
 public class UserInfoServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements UserInfoService {
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     private RedisService redisService;
@@ -98,10 +96,7 @@ public class UserInfoServiceImpl extends ServiceImpl<SysUserMapper, SysUser> imp
         map.put("name",name);
 
         //jwt生成token字符串
-        Map claims=new HashMap();
-        map.put("userId",userInfo.getId());
-        map.put("userName",name);
-        String token = jwtTokenUtil.generateToken(claims);
+        String token = JwtHelper.createToken(userInfo.getId(),name);
         map.put("token",token);
         return map;
     }

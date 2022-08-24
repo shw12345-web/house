@@ -1,6 +1,8 @@
 package com.yunzhu.house.common.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 通用返回对象
@@ -9,6 +11,7 @@ import lombok.Data;
  * @date 2022/8/4 14:53
  */
 @Data
+@NoArgsConstructor
 public class CommonResult<T> {
 
     /**
@@ -24,13 +27,24 @@ public class CommonResult<T> {
      */
     private T data;
 
-    public CommonResult() {
+    public CommonResult(Long code) {
+        this.code=code;
     }
 
     protected CommonResult(long code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    public static <T> CommonResult<T> success(){
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode());
+    }
+
+    @JsonIgnore
+    //使之不在json序列化结果当中
+    public boolean isSuccess(){
+        return this.code == ResultCode.SUCCESS.getCode();
     }
 
     /**

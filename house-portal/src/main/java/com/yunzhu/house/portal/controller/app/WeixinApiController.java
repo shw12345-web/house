@@ -2,12 +2,12 @@ package com.yunzhu.house.portal.controller.app;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yunzhu.house.common.api.CommonResult;
+import com.yunzhu.house.common.helper.JwtHelper;
 import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.portal.service.UserInfoService;
 import com.yunzhu.house.portal.util.ConstantWxPropertiesUtils;
 import com.yunzhu.house.portal.util.HttpClientUtils;
 import com.yunzhu.house.portal.vo.OAuthReq;
-import com.yunzhu.house.util.JwtTokenUtil;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.util.Asserts;
@@ -31,11 +31,9 @@ import java.util.Map;
  */
 @Controller
 @Api(tags = "WeixinApiController", description = "微信授权接口")
-@RequestMapping("/api/user/wx")
+@RequestMapping("/api/SysUser/wx")
 public class WeixinApiController {
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     private UserInfoService userInfoService;
@@ -114,10 +112,7 @@ public class WeixinApiController {
                 map.put("openid", "");
             }
             //使用jwt生成token字符串
-            Map<String, Object> claims = new HashMap<>();
-            claims.put("userId", userInfo.getId());
-            claims.put("userName", name);
-            String token = jwtTokenUtil.generateToken(claims);
+            String token = JwtHelper.createToken(userInfo.getId(),name);
             map.put("token", token);
             //跳转到前端页面
             return "redirect:" + ConstantWxPropertiesUtils.YYGH_BASE_URL + "/weixin/callback?token=" + map.get("token") + "&openid=" + map.get("openid") + "&name=" + URLEncoder.encode(map.get("name"), "utf-8");
