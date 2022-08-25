@@ -14,6 +14,9 @@ public class HouseOrder implements Serializable {
     @ApiModelProperty(value = "房源ID")
     private Long houseid;
 
+    @ApiModelProperty(value = "房源名称")
+    private String housename;
+
     @ApiModelProperty(value = "租客ID")
     private Long tenantid;
 
@@ -47,6 +50,9 @@ public class HouseOrder implements Serializable {
     @ApiModelProperty(value = "订单租金")
     private BigDecimal amount;
 
+    @ApiModelProperty(value = "订单数量")
+    private Integer quantity;
+
     @ApiModelProperty(value = "支付方式：0->季付；1->半年付；2->年付")
     private Integer payType;
 
@@ -69,5 +75,4 @@ public class HouseOrder implements Serializable {
     private Date modifyTime;
 
     private static final long serialVersionUID = 1L;
-
 }

@@ -1,7 +1,8 @@
-package com.yunzhu.house.portal.service;
+package com.yunzhu.house.portal.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import com.yunzhu.house.portal.service.FileService;
 import com.yunzhu.house.portal.util.ConstantOssPropertiesUtils;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;

@@ -178,7 +178,7 @@ public class IUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implem
         if(user == null){
             return CommonResult.failed("找不到当前用户");
         }
-        user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
+        user.setPassword(StringUtils.EMPTY);
         return CommonResult.success(user);
     }
 
