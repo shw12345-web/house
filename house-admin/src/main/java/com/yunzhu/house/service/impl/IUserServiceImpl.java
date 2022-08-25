@@ -129,22 +129,64 @@ public class IUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implem
     }
 
     @Override
-    public CommonResult<String> resetPassword(String passwordOld, String passwordNew, SysUser SysUser) {
-        return null;
+    public CommonResult<String> resetPassword(String passwordOld, String passwordNew, SysUser user) {
+        //防止横向越权,要校验一下这个用户的旧密码,一定要指定是这个用户.因为我们会查询一个count(1),如果不指定id,那么结果就是true啦count>0;
+        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", user.getId());
+        queryWrapper.eq("password",MD5Util.MD5EncodeUtf8(passwordOld));
+        Long resultCount = baseMapper.selectCount(queryWrapper);
+        if(resultCount == 0){
+            return CommonResult.failed("旧密码错误");
+        }
+
+        user.setPassword(MD5Util.MD5EncodeUtf8(passwordNew));
+        int updateCount = baseMapper.updateByPrimaryKeySelective(user);
+        if(updateCount > 0){
+            return CommonResult.success("密码更新成功");
+        }
+        return CommonResult.failed("密码更新失败");
     }
 
     @Override
-    public CommonResult<SysUser> updateInformation(SysUser SysUser) {
-        return null;
+    public CommonResult<SysUser> updateInformation(SysUser user) {
+        //username是不能被更新的
+        //email也要进行一个校验,校验新的email是不是已经存在,并且存在的email如果相同的话,不能是我们当前的这个用户的.
+        QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", user.getId());
+        queryWrapper.eq("password",user.getEmail());
+        Long resultCount = baseMapper.selectCount(queryWrapper);
+        if(resultCount > 0){
+            return CommonResult.failed("email已存在,请更换email再尝试更新");
+        }
+        SysUser updateUser = new SysUser();
+        updateUser.setId(user.getId());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setPhone(user.getPhone());
+//        updateUser.setQuestion(user.getQuestion());
+//        updateUser.setAnswer(user.getAnswer());
+
+        int updateCount = baseMapper.updateByPrimaryKeySelective(updateUser);
+        if(updateCount > 0){
+            return CommonResult.success(updateUser,"更新个人信息成功");
+        }
+        return CommonResult.failed("更新个人信息失败");
     }
 
     @Override
-    public CommonResult<SysUser> getInformation(Long SysUserId) {
-        return null;
+    public CommonResult<SysUser> getInformation(Long userId) {
+        SysUser user = baseMapper.selectByPrimaryKey(userId);
+        if(user == null){
+            return CommonResult.failed("找不到当前用户");
+        }
+        user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
+        return CommonResult.success(user);
     }
 
     @Override
-    public CommonResult checkAdminRole(SysUser SysUser) {
-        return null;
+    public CommonResult checkAdminRole(SysUser user) {
+        if(user != null && user.getRole().intValue() == Const.Role.ROLE_ADMIN){
+            return CommonResult.success();
+        }
+        return CommonResult.failed();
     }
 }
