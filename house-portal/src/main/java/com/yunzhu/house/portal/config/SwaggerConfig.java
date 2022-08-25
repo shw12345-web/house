@@ -20,9 +20,9 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
                 .apiBasePackage("com.yunzhu.house.portal.controller")
-                .title("mall前台系统")
-                .description("mall前台相关接口文档")
-                .contactName("macro")
+                .title("房屋前台系统")
+                .description("house前台相关接口文档")
+                .contactName("yunzhu")
                 .version("1.0")
                 .enableSecurity(true)
                 .build();

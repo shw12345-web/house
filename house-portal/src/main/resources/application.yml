@@ -39,7 +39,7 @@ secure:
 
 # 自定义redis key
 redis:
-  database: mall
+  database: house
   key:
     authCode: 'ums:authCode'
     orderId: 'oms:orderId'
