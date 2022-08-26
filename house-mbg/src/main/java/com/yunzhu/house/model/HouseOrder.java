@@ -75,4 +75,11 @@ public class HouseOrder implements Serializable {
     private Date modifyTime;
 
     private static final long serialVersionUID = 1L;
+
+
+    public String getOrderDesc(){
+        StringBuffer sb = new StringBuffer();
+        sb.append(orderNo).append("#");
+        return sb.toString();
+    }
 }

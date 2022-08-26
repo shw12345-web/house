@@ -31,10 +31,15 @@ public class CommonResult<T> {
         this.code=code;
     }
 
-    protected CommonResult(long code, String message, T data) {
+    public CommonResult(long code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    public CommonResult(long code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
     public static <T> CommonResult<T> success(){
@@ -92,6 +97,10 @@ public class CommonResult<T> {
      */
     public static <T> CommonResult<T> failed(String message) {
         return new CommonResult<T>(ResultCode.FAILED.getCode(), message, null);
+    }
+
+    public static <T> CommonResult<T> failed(String  code,String message) {
+        return new CommonResult<T>(ResultCode.FAILED.getCode(), message);
     }
 
     /**
