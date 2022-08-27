@@ -106,7 +106,7 @@ public class HouseOrderServiceImpl extends ServiceImpl<HouseOrderMapper, HouseOr
         queryWrapper.eq("orderNo", order).eq("tenantid", userId);
         List<HouseOrder> orderItemList = baseMapper.selectList(query);
         for (HouseOrder orderItem : orderItemList) {
-            GoodsDetail goods = GoodsDetail.newInstance(orderItem.getHouseid().toString(), orderItem.getHousename(),
+            GoodsDetail goods = GoodsDetail.newInstance(orderItem.getHouseid().toString(), orderItem.getHouseName(),
                     BigDecimalUtil.mul(orderItem.getAmount().doubleValue(), new Double(100).doubleValue()).longValue(),
                     orderItem.getQuantity());
             goodsDetailList.add(goods);
@@ -195,7 +195,7 @@ public class HouseOrderServiceImpl extends ServiceImpl<HouseOrderMapper, HouseOr
         if(Const.AlipayCallback.TRADE_STATUS_TRADE_SUCCESS.equals(tradeStatus)){
             order.setPaymentTime(DateTimeUtil.strToDate(params.get("gmt_payment")));
             order.setStatus(Const.OrderStatusEnum.PAID.getCode());
-            baseMapper.updateByPrimaryKeySelective(order);
+            baseMapper.updateById(order);
         }
 
 //        PayInfo payInfo = new PayInfo();

@@ -1,13 +1,11 @@
 package com.yunzhu.house.portal;
 
 import com.yunzhu.house.mapper.SysUserMapper;
-import com.yunzhu.house.model.SysUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**

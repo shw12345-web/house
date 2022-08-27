@@ -2,30 +2,17 @@ package com.yunzhu.house.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.HouseRoom;
-import com.yunzhu.house.model.HouseRoomExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+/**
+* @author DELL
+* @description 针对表【house_room】的数据库操作Mapper
+* @createDate 2022-08-27 11:40:52
+* @Entity generator.pojo.HouseRoom
+*/
 public interface HouseRoomMapper extends BaseMapper<HouseRoom> {
-    long countByExample(HouseRoomExample example);
 
-    int deleteByExample(HouseRoomExample example);
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(HouseRoom row);
-
-    int insertSelective(HouseRoom row);
-
-    List<HouseRoom> selectByExample(HouseRoomExample example);
-
-    HouseRoom selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("row") HouseRoom row, @Param("example") HouseRoomExample example);
-
-    int updateByExample(@Param("row") HouseRoom row, @Param("example") HouseRoomExample example);
-
-    int updateByPrimaryKeySelective(HouseRoom row);
-
-    int updateByPrimaryKey(HouseRoom row);
 }
+
+
+
+

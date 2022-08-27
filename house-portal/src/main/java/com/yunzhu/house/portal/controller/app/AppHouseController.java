@@ -27,7 +27,7 @@ public class AppHouseController extends BaseController {
 
 
 
-    @ApiOperation("创建商品")
+    @ApiOperation("创建房源")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody LoginVo productParam) {

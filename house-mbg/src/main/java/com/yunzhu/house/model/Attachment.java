@@ -1,24 +1,41 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 附件表
+ * @TableName attachment
+ */
+@TableName(value ="attachment")
 @Data
 public class Attachment implements Serializable {
-    @ApiModelProperty(value = "主键ID")
+    /**
+     * 主键ID
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "文件名称")
+    /**
+     * 文件名称
+     */
     private String fileName;
 
-    @ApiModelProperty(value = "文件地址")
+    /**
+     * 文件地址
+     */
     private String filePath;
 
-    @ApiModelProperty(value = "文件类型")
-    private Byte fileType;
+    /**
+     * 文件类型
+     */
+    private Integer fileType;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
 }

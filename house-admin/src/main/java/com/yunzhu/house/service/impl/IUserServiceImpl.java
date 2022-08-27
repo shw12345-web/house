@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yunzhu.house.common.api.CommonResult;
 import com.yunzhu.house.common.support.Const;
 import com.yunzhu.house.common.util.MD5Util;
-import com.yunzhu.house.mapper.SysUserMapper;
-import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

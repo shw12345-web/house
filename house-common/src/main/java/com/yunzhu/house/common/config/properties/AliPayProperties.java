@@ -5,7 +5,7 @@ public class AliPayProperties {
     private String url = "https://openapi.alipay.com/gateway.do";
     private String format = "json";
 
-    private String appId = "";
+    private String  appId = "";
 
     // 合作身份者ID，以2088开头由16位纯数字组成的字符串
     private String partner = "";

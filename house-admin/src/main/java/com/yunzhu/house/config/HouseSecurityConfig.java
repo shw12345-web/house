@@ -1,19 +1,11 @@
 package com.yunzhu.house.config;
 
 import com.yunzhu.house.service.UmsResourceService;
-import com.yunzhu.house.component.DynamicSecurityService;
-import com.yunzhu.house.model.UmsResource;
 import com.yunzhu.house.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.userdetails.UserDetailsService;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * TODO

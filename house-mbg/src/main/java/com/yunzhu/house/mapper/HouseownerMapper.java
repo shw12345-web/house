@@ -2,30 +2,17 @@ package com.yunzhu.house.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.Houseowner;
-import com.yunzhu.house.model.HouseownerExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+/**
+* @author DELL
+* @description 针对表【houseowner(房源房东)】的数据库操作Mapper
+* @createDate 2022-08-27 11:40:52
+* @Entity generator.pojo.Houseowner
+*/
 public interface HouseownerMapper extends BaseMapper<Houseowner> {
-    long countByExample(HouseownerExample example);
 
-    int deleteByExample(HouseownerExample example);
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Houseowner row);
-
-    int insertSelective(Houseowner row);
-
-    List<Houseowner> selectByExample(HouseownerExample example);
-
-    Houseowner selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("row") Houseowner row, @Param("example") HouseownerExample example);
-
-    int updateByExample(@Param("row") Houseowner row, @Param("example") HouseownerExample example);
-
-    int updateByPrimaryKeySelective(Houseowner row);
-
-    int updateByPrimaryKey(Houseowner row);
 }
+
+
+
+

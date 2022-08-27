@@ -1,7 +1,6 @@
 package com.yunzhu.house.service;
 
 import com.yunzhu.house.common.api.CommonResult;
-import com.yunzhu.house.model.SysUser;
 
 /**
  * TODO

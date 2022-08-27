@@ -1,46 +1,77 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * 
+ * @TableName house_detail
+ */
+@TableName(value ="house_detail")
 @Data
 public class HouseDetail implements Serializable {
-    @ApiModelProperty(value = "主键")
+    /**
+     * 主键
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "房屋资源ID")
+    /**
+     * 房屋资源ID
+     */
     private Long houseid;
 
-    @ApiModelProperty(value = "朝向")
+    /**
+     * 朝向
+     */
     private String orientation;
 
-    @ApiModelProperty(value = "户型")
+    /**
+     * 户型
+     */
     private String housetype;
 
-    @ApiModelProperty(value = "装修")
+    /**
+     * 装修
+     */
     private String renovation;
 
-    @ApiModelProperty(value = "房屋设施")
+    /**
+     * 房屋设施
+     */
     private String housefacilities;
 
-    @ApiModelProperty(value = "付款方式")
+    /**
+     * 付款方式
+     */
     private String paymentmethod;
 
-    @ApiModelProperty(value = "租期")
+    /**
+     * 租期
+     */
     private String leaseterm;
 
-    @ApiModelProperty(value = "水费")
+    /**
+     * 水费
+     */
     private BigDecimal chargewater;
 
-    @ApiModelProperty(value = "电费")
+    /**
+     * 电费
+     */
     private BigDecimal electricityfees;
 
-    @ApiModelProperty(value = "房源简介")
+    /**
+     * 房源简介
+     */
     private String houseintroduction;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
 }

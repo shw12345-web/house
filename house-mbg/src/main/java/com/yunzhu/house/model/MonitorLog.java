@@ -1,29 +1,51 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 监控日志表
+ * @TableName monitor_log
+ */
+@TableName(value ="monitor_log")
 @Data
 public class MonitorLog implements Serializable {
+    /**
+     * 
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "日志类型")
-    private Short logType;
+    /**
+     * 日志类型
+     */
+    private Integer logType;
 
-    @ApiModelProperty(value = "日志描述")
+    /**
+     * 日志描述
+     */
     private String message;
 
-    @ApiModelProperty(value = "对象ID")
+    /**
+     * 对象ID
+     */
     private Integer objectId;
 
-    @ApiModelProperty(value = "失联时间，单位为毫秒")
+    /**
+     * 失联时间，单位为毫秒
+     */
     private Double value;
 
-    @ApiModelProperty(value = "是否解除警报")
-    private Byte disarm;
+    /**
+     * 是否解除警报
+     */
+    private Integer disarm;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
 }

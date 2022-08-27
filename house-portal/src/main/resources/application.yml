@@ -12,6 +12,17 @@ mybatis:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
 
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  check-config-location: false
+  global-config:
+    db-config:
+      id-type: auto
+      table-prefix:
+  type-aliases-package: com.yunzhu.house.model
+  type-enums-package: com.yunzhu.house.enums
+
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: house-portal-secret #JWT加解密使用的密钥
@@ -71,6 +82,8 @@ wx:
     app_id: 'wxed9954c01bb89b47'
     app_secret: 'a7482517235173ddb4083788de60b90e'
     redirect_url: 'http://guli.shop/api/ucenter/wx/callback'
+
+
 
 
 

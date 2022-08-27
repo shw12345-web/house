@@ -2,7 +2,6 @@ package com.yunzhu.house.controller;
 
 import com.yunzhu.house.common.api.CommonResult;
 import com.yunzhu.house.common.support.Const;
-import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

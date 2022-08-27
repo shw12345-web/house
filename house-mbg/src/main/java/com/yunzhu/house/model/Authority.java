@@ -1,52 +1,86 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 权限管理
+ * @TableName authority
+ */
+@TableName(value ="authority")
 @Data
 public class Authority implements Serializable {
-    @ApiModelProperty(value = "主键ID")
+    /**
+     * 主键ID
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "按钮显示项")
+    /**
+     * 按钮显示项
+     */
     private String buttons;
 
-    @ApiModelProperty(value = "可勾选的")
+    /**
+     * 可勾选的
+     */
     private Integer checked;
 
-    @ApiModelProperty(value = "可伸展的")
+    /**
+     * 可伸展的
+     */
     private Integer expanded;
 
-    @ApiModelProperty(value = "按钮样式")
+    /**
+     * 按钮样式
+     */
     private String iconCls;
 
-    @ApiModelProperty(value = "是否是叶子项")
+    /**
+     * 是否是叶子项
+     */
     private Integer leaf;
 
-    @ApiModelProperty(value = "菜单代号")
+    /**
+     * 菜单代号
+     */
     private String menuCode;
 
-    @ApiModelProperty(value = "菜单配置参数")
+    /**
+     * 菜单配置参数
+     */
     private String menuConfig;
 
-    @ApiModelProperty(value = "菜单名称")
+    /**
+     * 菜单名称
+     */
     private String menuName;
 
-    @ApiModelProperty(value = "父节点ID")
+    /**
+     * 父节点ID
+     */
     private Long parentId;
 
-    @ApiModelProperty(value = "排序")
+    /**
+     * 排序
+     */
     private Integer sortOrder;
 
-    @ApiModelProperty(value = "创建Tab的路径")
+    /**
+     * 创建Tab的路径
+     */
     private String url;
 
-    @ApiModelProperty(value = "菜单项说明")
+    /**
+     * 菜单项说明
+     */
     private String descinfo;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
-
 }

@@ -2,30 +2,17 @@ package com.yunzhu.house.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.MonitorLog;
-import com.yunzhu.house.model.MonitorLogExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+/**
+* @author DELL
+* @description 针对表【monitor_log(监控日志表)】的数据库操作Mapper
+* @createDate 2022-08-27 11:40:53
+* @Entity generator.pojo.MonitorLog
+*/
 public interface MonitorLogMapper extends BaseMapper<MonitorLog> {
-    long countByExample(MonitorLogExample example);
 
-    int deleteByExample(MonitorLogExample example);
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(MonitorLog row);
-
-    int insertSelective(MonitorLog row);
-
-    List<MonitorLog> selectByExample(MonitorLogExample example);
-
-    MonitorLog selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("row") MonitorLog row, @Param("example") MonitorLogExample example);
-
-    int updateByExample(@Param("row") MonitorLog row, @Param("example") MonitorLogExample example);
-
-    int updateByPrimaryKeySelective(MonitorLog row);
-
-    int updateByPrimaryKey(MonitorLog row);
 }
+
+
+
+

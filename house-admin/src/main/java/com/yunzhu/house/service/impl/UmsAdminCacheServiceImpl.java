@@ -1,7 +1,5 @@
 package com.yunzhu.house.service.impl;
 
-import com.yunzhu.house.model.UmsAdmin;
-import com.yunzhu.house.model.UmsResource;
 import com.yunzhu.house.service.UmsAdminCacheService;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,5 @@
 package com.yunzhu.house.service;
 
-import com.yunzhu.house.model.UmsResource;
-
 import java.util.List;
 
 /**

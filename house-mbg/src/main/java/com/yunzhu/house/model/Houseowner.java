@@ -1,64 +1,107 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 房源房东
+ * @TableName houseowner
+ */
+@TableName(value ="houseowner")
 @Data
 public class Houseowner implements Serializable {
+    /**
+     * 
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "登录账号")
+    /**
+     * 登录账号
+     */
     private String houseownercode;
 
-    @ApiModelProperty(value = "登录密码")
+    /**
+     * 登录密码
+     */
     private String houseownerpassword;
 
-    @ApiModelProperty(value = "姓名")
+    /**
+     * 姓名
+     */
     private String houseownername;
 
-    @ApiModelProperty(value = "身份证号")
+    /**
+     * 身份证号
+     */
     private String houseowneridentify;
 
-    @ApiModelProperty(value = "电话")
+    /**
+     * 电话
+     */
     private String houseownertel;
 
-    @ApiModelProperty(value = "描述信息")
+    /**
+     * 描述信息
+     */
     private String houseownerdesc;
 
-    @ApiModelProperty(value = "住址")
+    /**
+     * 住址
+     */
     private String houseowneraddress;
 
-    @ApiModelProperty(value = "角色类型")
+    /**
+     * 角色类型
+     */
     private Long houseownerrole;
 
-    @ApiModelProperty(value = "最后一次登录")
+    /**
+     * 最后一次登录
+     */
     private Date houseownerlastlogintime;
 
-    @ApiModelProperty(value = "注册时间")
+    /**
+     * 注册时间
+     */
     private Date registdate;
 
-    @ApiModelProperty(value = "审核内容")
+    /**
+     * 审核内容
+     */
     private String checkopion;
 
-    @ApiModelProperty(value = "审核者ID")
+    /**
+     * 审核者ID
+     */
     private Long checkerid;
 
-    @ApiModelProperty(value = "审核者姓名")
+    /**
+     * 审核者姓名
+     */
     private String checkername;
 
-    @ApiModelProperty(value = "审核时间")
+    /**
+     * 审核时间
+     */
     private Date checkdate;
 
-    @ApiModelProperty(value = "房主照片")
+    /**
+     * 房主照片
+     */
     private String houseownerimage;
 
-    @ApiModelProperty(value = "房主二维码图片")
+    /**
+     * 房主二维码图片
+     */
     private String houseownertwodimensionalcode;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
-
 }

@@ -1,29 +1,46 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @TableName house_file
+ */
+@TableName(value ="house_file")
 @Data
 public class HouseFile implements Serializable {
-    @ApiModelProperty(value = "主键")
+    /**
+     * 主键
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "房屋资源ID")
+    /**
+     * 房屋资源ID
+     */
     private Long houseid;
 
-    @ApiModelProperty(value = "图片类型")
+    /**
+     * 图片类型
+     */
     private String picturetype;
 
-    @ApiModelProperty(value = "图片名称")
+    /**
+     * 图片名称
+     */
     private String filename;
 
-    @ApiModelProperty(value = "图片地址")
+    /**
+     * 图片地址
+     */
     private String fileurl;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
-
 }

@@ -1,35 +1,14 @@
 package com.yunzhu.house.service.impl;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.StrUtil;
-import com.github.pagehelper.PageHelper;
-import com.yunzhu.house.bo.AdminUserDetails;
 import com.yunzhu.house.dto.UmsAdminParam;
 import com.yunzhu.house.dto.UpdateAdminPasswordParam;
-import com.yunzhu.house.model.UmsAdmin;
-import com.yunzhu.house.model.UmsResource;
-import com.yunzhu.house.model.UmsRole;
 import com.yunzhu.house.service.UmsAdminCacheService;
 import com.yunzhu.house.service.UmsAdminService;
-import com.yunzhu.house.util.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

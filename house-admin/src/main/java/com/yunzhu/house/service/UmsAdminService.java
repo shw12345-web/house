@@ -2,9 +2,6 @@ package com.yunzhu.house.service;
 
 import com.yunzhu.house.dto.UmsAdminParam;
 import com.yunzhu.house.dto.UpdateAdminPasswordParam;
-import com.yunzhu.house.model.UmsAdmin;
-import com.yunzhu.house.model.UmsResource;
-import com.yunzhu.house.model.UmsRole;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 

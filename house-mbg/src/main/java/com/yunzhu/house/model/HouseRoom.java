@@ -1,20 +1,36 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @TableName house_room
+ */
+@TableName(value ="house_room")
 @Data
 public class HouseRoom implements Serializable {
-    @ApiModelProperty(value = "主键ID")
+    /**
+     * 主键ID
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "房源ID")
+    /**
+     * 房源ID
+     */
     private Integer houseid;
 
-    @ApiModelProperty(value = "房间ID")
+    /**
+     * 房间ID
+     */
     private Integer roomid;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

@@ -1,7 +1,7 @@
 package com.yunzhu.house.bo;
 
-import com.yunzhu.house.model.UmsResource;
-import com.yunzhu.house.model.UmsAdmin;
+import com.yunzhu.house.model.Authority;
+import com.yunzhu.house.model.SysUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,10 +19,10 @@ import java.util.stream.Collectors;
 public class AdminUserDetails implements UserDetails {
 
     //后台用户
-    private UmsAdmin umsAdmin;
+    private SysUser umsAdmin;
     //拥有资源列表
-    private List<UmsResource> resourceList;
-    public AdminUserDetails(UmsAdmin umsAdmin,List<UmsResource> resourceList) {
+    private List<Authority> resourceList;
+    public AdminUserDetails(SysUser umsAdmin,List<Authority> resourceList) {
         this.umsAdmin = umsAdmin;
         this.resourceList = resourceList;
     }
@@ -30,7 +30,7 @@ public class AdminUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //返回当前用户的角色
         return resourceList.stream()
-                .map(role ->new SimpleGrantedAuthority(role.getId()+":"+role.getName()))
+                .map(role ->new SimpleGrantedAuthority(role.getId()+":"+role.getMenuName()))
                 .collect(Collectors.toList());
     }
 
@@ -41,7 +41,7 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return umsAdmin.getUsername();
+        return umsAdmin.getUserName();
     }
 
     @Override

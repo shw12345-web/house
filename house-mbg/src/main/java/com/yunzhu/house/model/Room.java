@@ -1,49 +1,87 @@
 package com.yunzhu.house.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+
+/**
+ * 
+ * @TableName room
+ */
+@TableName(value ="room")
 @Data
 public class Room implements Serializable {
+    /**
+     * 
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "房间名称")
+    /**
+     * 房间名称
+     */
     private String roomname;
 
-    @ApiModelProperty(value = "房间面积")
+    /**
+     * 房间面积
+     */
     private String roomarea;
 
-    @ApiModelProperty(value = "房间描述")
+    /**
+     * 房间描述
+     */
     private String roomdesc;
 
-    @ApiModelProperty(value = "房间二维码照片")
+    /**
+     * 房间二维码照片
+     */
     private String roomtwodimensionalcode;
 
-    @ApiModelProperty(value = "房间照片")
+    /**
+     * 房间照片
+     */
     private String roomimage;
 
-    @ApiModelProperty(value = "房屋ID")
+    /**
+     * 房屋ID
+     */
     private Long houseid;
 
-    @ApiModelProperty(value = "房屋名")
+    /**
+     * 房屋名
+     */
     private String housename;
 
-    @ApiModelProperty(value = "审核内容")
+    /**
+     * 审核内容
+     */
     private String checkopion;
 
-    @ApiModelProperty(value = "审核者ID")
+    /**
+     * 审核者ID
+     */
     private Long checkerid;
 
-    @ApiModelProperty(value = "审核者姓名")
+    /**
+     * 审核者姓名
+     */
     private String checkername;
 
-    @ApiModelProperty(value = "审核时间")
+    /**
+     * 审核时间
+     */
     private Date checkdate;
 
+    /**
+     * 
+     */
     private Date registdate;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
 }
