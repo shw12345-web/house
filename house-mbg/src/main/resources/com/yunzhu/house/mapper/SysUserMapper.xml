@@ -39,4 +39,11 @@
         create_time,update_time,is_deleted,
         status
     </sql>
+    <select id="selectOneById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </select>
 </mapper>

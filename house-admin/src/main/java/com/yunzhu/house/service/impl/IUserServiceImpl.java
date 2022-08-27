@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yunzhu.house.common.api.CommonResult;
 import com.yunzhu.house.common.support.Const;
 import com.yunzhu.house.common.util.MD5Util;
+import com.yunzhu.house.mapper.SysUserMapper;
+import com.yunzhu.house.model.SysUser;
 import com.yunzhu.house.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -138,7 +140,7 @@ public class IUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implem
         }
 
         user.setPassword(MD5Util.MD5EncodeUtf8(passwordNew));
-        int updateCount = baseMapper.updateByPrimaryKeySelective(user);
+        int updateCount = baseMapper.updateById(user);
         if(updateCount > 0){
             return CommonResult.success("密码更新成功");
         }
@@ -163,7 +165,7 @@ public class IUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implem
 //        updateUser.setQuestion(user.getQuestion());
 //        updateUser.setAnswer(user.getAnswer());
 
-        int updateCount = baseMapper.updateByPrimaryKeySelective(updateUser);
+        int updateCount = baseMapper.updateById(updateUser);
         if(updateCount > 0){
             return CommonResult.success(updateUser,"更新个人信息成功");
         }
@@ -172,7 +174,7 @@ public class IUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implem
 
     @Override
     public CommonResult<SysUser> getInformation(Long userId) {
-        SysUser user = baseMapper.selectByPrimaryKey(userId);
+        SysUser user = baseMapper.selectOneById(userId);
         if(user == null){
             return CommonResult.failed("找不到当前用户");
         }

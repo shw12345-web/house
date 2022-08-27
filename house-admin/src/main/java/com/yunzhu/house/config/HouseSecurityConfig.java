@@ -1,7 +1,5 @@
 package com.yunzhu.house.config;
 
-import com.yunzhu.house.service.UmsResourceService;
-import com.yunzhu.house.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,16 +14,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Configuration
 public class HouseSecurityConfig {
 
-    @Autowired
-    private UmsAdminService adminService;
-    @Autowired
-    private UmsResourceService resourceService;
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        //获取登录用户信息
-        return username -> adminService.loadUserByUsername(username);
-    }
+//    @Autowired
+//    private UmsAdminService adminService;
+//    @Autowired
+//    private UmsResourceService resourceService;
+//
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        //获取登录用户信息
+//        return username -> adminService.loadUserByUsername(username);
+//    }
 
 //    @Bean
 //    public DynamicSecurityService dynamicSecurityService() {

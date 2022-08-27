@@ -5,14 +5,33 @@
 <mapper namespace="com.yunzhu.house.mapper.AttachmentMapper">
 
     <resultMap id="BaseResultMap" type="com.yunzhu.house.model.Attachment">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="fileName" column="file_name" jdbcType="VARCHAR"/>
-            <result property="filePath" column="file_path" jdbcType="VARCHAR"/>
-            <result property="fileType" column="file-type" jdbcType="TINYINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="fileName" column="file_name" jdbcType="VARCHAR"/>
+        <result property="filePath" column="file_path" jdbcType="VARCHAR"/>
+        <result property="fileType" column="file-type" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,file_name,file_path,
         file-type
     </sql>
+    <select id="selectOneById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from attachment
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </select>
+    <select id="selectAllById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from attachment
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </select>
+    <delete id="delById">
+        delete from attachment
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </delete>
 </mapper>

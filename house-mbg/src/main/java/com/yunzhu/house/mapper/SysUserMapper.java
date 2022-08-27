@@ -1,4 +1,5 @@
 package com.yunzhu.house.mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yunzhu.house.model.SysUser;
@@ -11,6 +12,7 @@ import com.yunzhu.house.model.SysUser;
 */
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
+    SysUser selectOneById(@Param("id") Long id);
 }
 
 
